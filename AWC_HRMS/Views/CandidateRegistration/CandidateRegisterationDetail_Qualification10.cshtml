@@ -1,0 +1,227 @@
+﻿@model AWC_HRMS.Models.CandidateEducation
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-borderless a1" >
+
+        <center>High School Details</center>
+        
+        <form asp-action="CandidateRegisterationDetail_Qualification10" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+     
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.NewCId" />
+
+            @*<div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10Course" class="control-label">Highest Qualification</label>
+                <input asp-for="_10Course" class="form-control" required />
+                <span asp-validation-for="_10Course" class="text-danger"></span>
+            </div>*@
+           
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10SchoolName" class="control-label">School Name</label>
+                <input asp-for="_10SchoolName" id="_10SchoolName" class="form-control" required />
+                <span asp-validation-for="_10SchoolName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10BoardName" class="control-label">Board University</label>
+                <input asp-for="_10BoardName" id="_10BoardName" class="form-control" required />
+                <span asp-validation-for="_10BoardName" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10Stream" class="control-label">Stream</label>
+                <input asp-for="_10Stream" id="_10Stream" class="form-control" required />
+                <span asp-validation-for="_10Stream" class="text-danger"></span>
+            </div>
+
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="_10YearOfPassing" class="control-label">Year of Passing</label>
+                <input asp-for="_10YearOfPassing" id="_10YearOfPassing" required class="form-control" />
+                <span asp-validation-for="_10YearOfPassing" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10PercentageCgpa" class="control-label">CGPA/Percentage</label>
+                <input asp-for="_10PercentageCgpa" id="_10PercentageCgpa" required class="form-control" />
+                <span asp-validation-for="_10PercentageCgpa" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="_10MarkSheet" class="control-label">Marksheet</label>
+                <input type="file" asp-for="_10MarkSheet" name="_10MarkSheet" id="_10MarkSheet" required class="form-control" onchange="Filevalidation()" />
+                <span asp-validation-for="_10MarkSheet" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10DegreePassingCertificate" class="control-label">Degree Certificate</label>
+                <input type="file" name="_10DegreePassingCertificate" id="_10DegreePassingCertificate" required asp-for="_10DegreePassingCertificate" class="form-control" onchange="Filevalidation1()" />
+                <span asp-validation-for="_10DegreePassingCertificate" class="text-danger"></span>
+            </div>
+           
+           
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                @Html.ActionLink("Back", "CandidateRegisterationDetail_Qualification12", new { id=ViewBag.NewCId },new{@class = "btn btn-info"})
+                <input type="submit" button class="btn btn-info" value="Save" formaction="" />
+                <!-- <input type="button" value="Preview" onclick="Response.redirect('CandidateRegisterationDetailNext')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetail_Employement", new { id=ViewBag.NewCId },new{@id="form13next",@class = "btn btn-info"})
+                
+            </div>
+             </br>
+        </form>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.TenthVals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+
+            document.getElementById("_10SchoolName").value = sptval0[0];
+            document.getElementById("_10BoardName").value = sptval0[1];
+            document.getElementById("_10Stream").value = sptval0[2];
+            document.getElementById("_10YearOfPassing").value = sptval0[3];
+            document.getElementById("_10PercentageCgpa").value = sptval0[4];
+
+        }
+
+    });
+
+</script>
+
+        <script>
+         $(function() {
+        $('#_10MarkSheet').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#_10MarkSheet").val('');
+            }
+        });
+    });
+
+
+      $(function() {
+        $('#_10DegreePassingCertificate').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#_10DegreePassingCertificate").val('');
+            }
+        });
+    });
+
+
+    Filevalidation = () => {
+
+
+        const fi = document.getElementById('_10MarkSheet');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#_10MarkSheet").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+
+
+
+
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+
+
+    }
+    Filevalidation1 = () => {
+        const fi = document.getElementById('_10DegreePassingCertificate');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    swal("File too Big, please select a file less than 4mb");
+                    $("#_10DegreePassingCertificate").val('');
+                    //} else if (file < 2048) {
+                    //    alert(
+                    //        "File too small, please select a file greater than 2mb");
+                    //    $("#file1").val('');
+                    //}
+                }
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+
+    </script>

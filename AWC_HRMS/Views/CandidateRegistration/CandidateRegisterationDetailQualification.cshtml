@@ -1,0 +1,242 @@
+﻿@model AWC_HRMS.Models.CandidateEducation
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-borderless a1" >
+        <center>Post Graduation  Details</center>
+        <form asp-action="CandidateRegisterationDetailQualification" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+          @*  <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateId" class="control-label"></label>
+                <input asp-for="CandidateId" id="txtCandidateId" class="form-control" required />
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>*@
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.NewCId" />
+
+            @*<div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgCourse" class="control-label">Highest Qualification</label>
+                <input asp-for="PgCourse" id="PgCourse" class="form-control" required />
+                <span asp-validation-for="PgCourse" class="text-danger"></span>
+            </div>*@
+           
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgCollegeName" class="control-label">College Name</label>
+                <input asp-for="PgCollegeName" id="PgCollegeName" class="form-control" required />
+                <span asp-validation-for="PgCollegeName" class="text-danger"></span>
+            </div>
+
+            
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgUniversity" class="control-label">Board University</label>
+                <input asp-for="PgUniversity" id="PgUniversity" class="form-control" required />
+                <span asp-validation-for="PgUniversity" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgStream" class="control-label">Stream</label>
+                <input asp-for="PgStream" id="PgStream" class="form-control" required />
+                <span asp-validation-for="PgStream" class="text-danger"></span>
+            </div>
+
+                     
+           
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="PgYearOfPassing" class="control-label">Year of Passing</label>
+                <input asp-for="PgYearOfPassing" id="PgYearOfPassing" class="form-control" required />
+                <span asp-validation-for="PgYearOfPassing" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgPercentageCgpa" class="control-label">CGPA/Percentage</label>
+                <input type="text" asp-for="PgPercentageCgpa" id="PgPercentageCgpa" class="form-control" required />
+                <span asp-validation-for="PgPercentageCgpa" class="text-danger"></span>
+            </div>
+
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PG_Degree_Name" class="control-label">Degree Name</label>
+                <input type="text" name="PG_Degree_Name" required asp-for="PG_Degree_Name" class="form-control" />
+                <span asp-validation-for="PG_Degree_Name" class="text-danger"></span>
+            </div>
+
+        <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="PgMarkSheet" class="control-label">Marksheet</label>
+                <input type="file" name="PgMarkSheet" asp-for="PgMarkSheet" required class="form-control" onchange="Filevalidation()" />
+                <span asp-validation-for="PgMarkSheet" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgDegreePassingCertificate" class="control-label">Degree / Provisional Certificate</label>
+                <input type="file" name="PgDegreePassingCertificate" required asp-for="PgDegreePassingCertificate" class="form-control" onchange="Filevalidation1()" />
+                <span asp-validation-for="PgDegreePassingCertificate" class="text-danger"></span>
+            </div>
+           
+           
+           
+            
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                @Html.ActionLink("Back", "CandidateRegisterationDetailAddress", new { id=ViewBag.NewCId },new{@class = "btn btn-info"})
+                <input type="submit"  class="btn btn-info" value="Save" formaction="" />
+                <!--<input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationDetailAddress')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetail_QualificationUG", new { id=ViewBag.NewCId },new{@id="form7next",@class = "btn btn-info"})
+            </div>
+            
+        </form>
+        @if(@ViewData["reason"]==null)
+        {
+    
+        }
+        else{
+         <div class="alert alert-success text-center"> @ViewData["reason"] </div>
+         }
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+
+    $(window).on('load', function () {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.PGVals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+            
+            document.getElementById("PgCollegeName").value = sptval0[20];
+            document.getElementById("PgUniversity").value = sptval0[21];
+            document.getElementById("PgStream").value = sptval0[22];
+            document.getElementById("PgYearOfPassing").value = sptval0[23];
+            document.getElementById("PgPercentageCgpa").value = sptval0[24];
+        }
+
+    });
+
+</script>
+
+<script>
+         $(function() {
+        $('#PgDegreePassingCertificate').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#PgDegreePassingCertificate").val('');
+            }
+        });
+    });
+
+
+      $(function() {
+        $('#PgMarkSheet').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#PgMarkSheet").val('');
+            }
+        });
+    });
+
+
+    Filevalidation = () => {
+
+
+        const fi = document.getElementById('PgMarkSheet');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#PgMarkSheet").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+
+
+
+
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+
+
+    }
+    Filevalidation1 = () => {
+        const fi = document.getElementById('PgDegreePassingCertificate');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    swal("File too Big, please select a file less than 4mb");
+                    $("#PgDegreePassingCertificate").val('');
+                    //} else if (file < 2048) {
+                    //    alert(
+                    //        "File too small, please select a file greater than 2mb");
+                    //    $("#file1").val('');
+                    //}
+                }
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+
+    </script>

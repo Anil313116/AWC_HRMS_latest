@@ -1,0 +1,125 @@
+﻿@model AWC_HRMS.Models.UserMasterVM
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+@*<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-3">
+            <h2 class="text-primary">Login Credentials</h2>
+            <br />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="row mb-3">
+            <label asp-for="UserMaster.UserName"></label>
+            <input asp-for="UserMaster.UserName" class="form-control" />
+            <span asp-validation-for="UserMaster.UserName" class="text-danger"></span>
+        </div>
+        <div class="row  mb-3">
+            <label asp-for="UserMaster.Password"></label>
+            <input asp-for="UserMaster.Password" type="password" class="form-control" />
+            <span asp-validation-for="UserMaster.Password" class="text-danger"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </div>
+    <a asp-action="Index">Forgot Password</a>
+</form>
+
+*@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="../wwwroot/js/popper.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWC</title>
+
+</head>
+
+<body>
+    <section class="vh-100" style="background-color: rgb(241, 235, 235);">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px ; background-color: rgb(204, 70, 70);">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">AWC Login</p>
+
+                                    <form class="mx-1 mx-md-4" method="post">
+
+
+                                        <div asp-validation-summary="All"></div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="UserName"><b>User Id</b></label>
+                                                <input type="text" placeholder="Enter User Id" id="form3Example3c" asp-for="UserMaster.UserName" class="form-control" />
+                                                <span asp-validation-for="UserMaster.UserName" class="text-success" for="form3Example3c"></span>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label for="Password"><b>Password</b></label>
+                                                <input type="password" placeholder="Enter Password" id="form3Example4c" asp-for="UserMaster.Password" type="password" class="form-control" />
+                                                <span asp-validation-for="UserMaster.Password" class="text-success" for="form3Example4c"></span>
+
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+
+                                            <input type="reset" class="btn btn-primary btn-lg ms-2" value="Cancel"/>
+                                        </div>
+
+                                        <a asp-action="ForgotPassword">Forgot Password</a>
+
+                                    </form>
+                                    <label> @ViewData["Error"] </label>
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                         class="img-fluid" alt="Sample image">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+
+
+
+
+
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+    }

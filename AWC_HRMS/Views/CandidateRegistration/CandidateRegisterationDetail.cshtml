@@ -1,0 +1,150 @@
+﻿@model AWC_HRMS.Models.CandidatePersonalDetails
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2" >
+
+        </div>
+
+        @*<div class="col-md-4 col-sm-12 Font_Color1">
+
+            Personal Details
+
+        </div>
+*@
+
+    <div class="col-md-8 col-sm-12 table-border a1" >
+        
+        <form asp-action="CandidateRegisterationDetail" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+            <h1 style="font-family:Arial; font-size:34pt;  font-weight: bold;" align="center">Personal Details</h1>
+            <hr>
+            @*<div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateId" class="control-label"></label>
+                <input asp-for="CandidateId" class="form-control" required />
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>*@
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.NewCId" />
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="CandidateName" class="control-label">Name</label>
+                <input type="text" asp-for="CandidateName" class="form-control" id="CandidateName" required readonly maxlength="20" />
+                <span asp-validation-for="CandidateName" class="text-danger"></span>
+            </div>
+           
+           
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="Gender" class="control-label"></label>
+               &nbsp;&nbsp;
+                <input type="radio" asp-for="Gender" value="Male" id="Male"  required /> Male &nbsp;&nbsp;&nbsp;
+                <input type="radio" asp-for="Gender" value="Female" id="Female"  required /> Female &nbsp;&nbsp;&nbsp;
+                <input type="radio" asp-for="Gender" value="Other" id="Other"  required /> Other &nbsp;&nbsp;&nbsp;
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="MaritalStatus" class="control-label">Marital Status</label>
+                <input type="radio" asp-for="MaritalStatus" value="Married" id="Married" required /> Married     &nbsp;&nbsp;&nbsp;
+                <input type="radio" asp-for="MaritalStatus" value="Unmarried" id="Unmarried" required /> Unmarried  &nbsp;&nbsp;&nbsp;
+                <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="AnniversaryDate" class="control-label">Anniversary Date</label>
+                <input type="date" asp-for="AnniversaryDate" id="AnniversaryDate" class="form-control" />
+                <span asp-validation-for="AnniversaryDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="Dob" class="control-label">Date of Birth</label>
+                <input type="date" asp-for="Dob" id="Dob" required class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="CandidateContactNumber" class="control-label">Mobile Number</label>
+                <input  type="number" asp-for="CandidateContactNumber" id="CandidateContactNumber" required readonly maxlength="10" class="form-control" />
+                <span asp-validation-for="CandidateContactNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="CandidateAlternateNumber" class="control-label"> Alternate Contact Number</label>
+                <input type="number"  asp-for="CandidateAlternateNumber" id="CandidateAlternateNumber" maxlength="10" class="form-control" />
+                <span asp-validation-for="CandidateAlternateNumber" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="FatherName" class="control-label">Father Name</label>
+                <input type="text" asp-for="FatherName" id="FatherName" required  maxlength="20"class="form-control" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="CandidateEmailId" class="control-label">Email Id</label>
+                <input type="email" asp-for="CandidateEmailId" id="CandidateEmailId" required readonly maxlength="30" class="form-control" />
+                <span asp-validation-for="CandidateEmailId" class="text-danger"></span>
+            </div>
+            
+           
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="CandidateImage" class="control-label">Current Passport size photo</label>
+                <input type="file" name="CandidateImage" id="CandidateImage" required asp-for="CandidateImage" class="form-control" onchange="Filevalidation()" />
+                <span asp-validation-for="CandidateImage" class="text-danger"></span>
+            </div>
+
+
+                        
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                <input type="submit" class="btn btn-info" value="Save" formaction="" />
+                <!-- <input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationDetailNext/')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetailNext", new { id=ViewBag.NewCId },new{@id="form1next",@class = "btn btn-info"})
+
+            </div>
+            </br>
+        </form>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+    </div>
+</div>
+<script type="text/javascript">
+
+    $('input[name=MaritalStatus]').click(function() {
+        //debugger;
+        if ($(this).val() == "Married") {
+            $("#AnniversaryDate").attr("required", true);
+            $("#AnniversaryDate").attr("disabled", false);
+        } else {
+            $("#AnniversaryDate").attr("required", false);
+            $("#AnniversaryDate").attr("disabled", true);
+        }
+    });
+    </script>

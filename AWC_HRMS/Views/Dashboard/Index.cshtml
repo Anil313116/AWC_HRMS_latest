@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+@*<h1>Welcome to your Portal </h1>*@
+@*<label>@ViewData["result"]</label>*@
+<style>
+    #tbl{
+          width:100%;
+         
+          color:black;
+    }
+    #tbl1{
+          width:100%;
+         
+          color:black;
+    }
+    #tbl2{
+          width:100%;
+          
+          color:black;
+    }
+
+
+</style>
+
+@*<div class="container">
+    <div class="row">
+        <div class=col-md-6>
+            <a asp-action="GenerateCandidateLink" class="btn btn-danger" asp-controller="GenerateLink"> Generate Candidate Link</a>
+        </div>*@
+      
+
+
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+        <table id="tbl" class="table table-bordered" style="display: block; overflow-x: auto; height: 300px;">
+
+    @*Respose.write "Bretval0: " + @ViewBag.Vals0
+    Respose.write "Bretval1: " + @ViewBag.Vals1
+    Respose.write "Bretval2: " + @ViewBag.Vals2*@
+    <tr>
+       
+        <td  class="success" style="padding:5px;font-weight:bold;color:orchid; font-family:Times New Roman " colspan=3> List Of Candidates Already Filled Forms</td>
+        </tr>
+
+        <tr>
+        
+        <td class="success" style="padding:5px;">Status</td>
+                    <td class="success" style="padding:5px;">Candidate Name</td>
+                    <td class="success" style="padding:5px;">Date Of Joining</td>
+
+        <tr id ="tbl" border="1">
+                    <script type="text/javascript">
+
+                        var data = "@ViewBag.Vals0";
+                        var sptval0 = data.split("#"); // Rows Split
+                        debugger;
+                        for (let i = 1; i < sptval0.length - 1; i++) {
+                            var sptval1 = sptval0[i].split("|"); // Columns Split
+                            for (let j = 0; j < sptval1.length - 3; j++) {
+
+                            //$("#tbl").append('<tr><td> <a href="/Dashboard/AllCandidateDetails?id='+sptval1[0]+'" >' + sptval1[0] + '</a></td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> < /tr>');
+                            $("#tbl").append('<tr><td> <a href="/Dashboard/AllCandidateDetails?id='+sptval1[0]+'" >'+ "Approve" +'</a></td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> < /tr>');
+
+                                
+                            }
+                        }
+                       
+
+                    </script>
+        </tr>
+        </table>
+
+        
+
+</div>
+
+        <div class="col-md-4">
+            <table id="tbl2" class="table table-bordered" style="display: block; overflow-x: auto; height: 300px;">
+          <tr>
+                <td class="success" style="padding:5px; font-weight:bold;color:orchid; font-family:Times New Roman "colspan=3>List Of Candidates Partially Filled Form</td>
+          </tr>
+                <tr>
+
+                    <td class="success" style="padding:5px;">Status</td>
+                    <td class="success" style="padding:5px;">Candidate Name</td>
+                    <td class="success" style="padding:5px;">Date Of Joining</td>
+                
+                <tr id="tbl2" border="1">
+                    <script type="text/javascript">
+
+                        var data = "@ViewBag.Vals1";
+                    var sptval0 = data.split("#");  // Rows Split
+
+                        for (let i = 1; i < sptval0.length - 1; i++) {
+                        var sptval1 = sptval0[i].split("|");   // Columns Split
+                            for (let j = 0; j < sptval1.length - 3; j++) {
+                            
+                            //$("#tbl2").append('<tr><td> <a href = "/Dashboard/AllCandidateDetails?id='+ sptval1[0] + '" >'+ "Partial Entries" +'</a></td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> </tr>');
+                                                        $("#tbl2").append('<tr><td>Partial Entries</td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> </tr>');
+                                console.log(sptval1[0]);
+                            }
+                        }
+                    </script>
+                </tr>
+                </tr>
+    </table>
+    </div>
+
+    <div class="col-md-4">
+    <table id="tbl3" class="table table-bordered" style="display: block; overflow-x: auto; height: 300px;">
+        <tr>
+                <td class="success" style="padding:5px; font-weight:bold;color:orchid; font-family:Times New Roman"colspan=3>List Of Candidates Not Intiated Form Process</td>
+
+    <tr>
+        <td class="success" style="padding:5px;">Status</td>
+                    <td class="success" style="padding:5px;">Candidate Name</td>
+                    <td class="success" style="padding:5px;">Date Of Joining</td>
+
+        <tr id ="tbl3" border="1">
+                    <script type="text/javascript">
+
+                        var data = "@ViewBag.Vals2";
+                        var sptval0 = data.split("#");
+
+                        for (let i = 1; i < sptval0.length - 1; i++) {
+                            var sptval1 = sptval0[i].split("|");
+                            for (let j = 0; j < sptval1.length - 3; j++) {
+                          //$("#tbl"). append('<tr><td> <a href="/Dashboard/AllCandidateDetails?id='+ sptval1[0] + '" >'+ "Approve"        +'</a></td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> < /tr>');
+                            //$("#tbl3").append('<tr><td> <a href = "/Dashboard/AllCandidateDetails?id=' + sptval1[0] + '" >'+ "Not Started" +'</a></td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> </tr>');
+                            $("#tbl3").append('<tr><td>Not Started</td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> </tr>');
+                                console.log(sptval1[0]);
+                            }
+                        }
+                    </script>
+        </tr>
+    </tr>    
+    </table>
+    </div>
+
+    <div class="col-md-4">
+        <table id="tbl4" class="table table-bordered" style="display: block; overflow-x: auto; height: 300px;">
+            <tr>
+                <td class="success" style="padding:5px; font-weight:bold;color:orchid; font-family:Times New Roman " colspan=3>List Of Candidates for Reinitiate Link</td>
+            </tr>
+            <tr>
+
+                <td class="success" style="padding:5px;">Status</td>
+                <td class="success" style="padding:5px;">Candidate Name</td>
+                <td class="success" style="padding:5px;">Date Of Joining</td>
+
+            <tr id="tbl4" border="1">
+                <script type="text/javascript">
+
+                    var data = "@ViewBag.Vals3";
+                    var sptval0 = data.split("#");  // Rows Split
+
+                    for (let i = 1; i < sptval0.length - 1; i++) {
+                        var sptval1 = sptval0[i].split("|");
+                        for (let j = 0; j < sptval1.length - 3; j++) {
+
+                            $("#tbl4").append('<tr><td> <a href = "/GenerateLink/ReinitiateCandidateLink?id=' + sptval1[0] + '" >' + "Reinitiate Link" + '</a></td> <td>' + sptval1[1] + '</td> <td>' + sptval1[2] + '</td> </tr>');
+
+                            console.log(sptval1[0]);
+                        }
+                    }
+                </script>
+            </tr>
+            </tr>
+        </table>
+    </div>
+
+<div>
+
+                @*<meta http-equiv="refresh" content="5" />*@
+</div>
+</div>
+</div>
+</div>

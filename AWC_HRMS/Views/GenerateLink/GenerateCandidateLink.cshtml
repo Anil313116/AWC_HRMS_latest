@@ -1,0 +1,220 @@
+﻿@model AWC_HRMS.Models.LinkGenerationTable
+@{
+    ViewData["Title"] = "GenerateCandidateLink";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+    
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+           
+                <div class="col-md-6" style="text-align:right;">
+        @*@if (User.Identity.IsAuthenticated)
+        {
+        
+             <span class="text-success font-weight-bold p-2">Welcome &nbsp; @User.Identity.Name</span><a class="btn btn-success" asp-action="Logout" asp-controller="UserLogin">Logout</a>
+       
+        }
+        *@         </div>
+        </div>
+            
+        <div class="container" style="max-width:1000px;">
+      
+        <div class="row">
+
+        <div class="col-md-2"></div>
+
+            <div class="col-md-8">
+                <label style="font-size20px; color:brown;"> @ViewData["Message"] </label>
+                <form method="post" style="border:1px solid black; font-weight:bolder;">
+                    <div class="container">
+                        
+                        <h1>Link Generation</h1>
+                        <p></p>
+
+
+
+                       <table class="">
+                            <tr>
+                                <td> <label for="CandidateName"><b>Candidate Name</b></label></td>
+                                 <td>
+                                    @Html.ValidationMessageFor(model => model.CandidateName, "", new { @class = "text-danger" })
+                                    <input type="text" placeholder="Candidate Name" asp-for="CandidateName" class="form-control" />
+
+                                 </td>    
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="email"><b>Email</b></label>
+
+                                </td>
+                                <td>
+                                    @Html.ValidationMessageFor(model => model.CandidateEmail, "", new { @class = "text-danger" })
+                                    <input type="email" placeholder="Enter Email" asp-for="CandidateEmail" class="form-control" />
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="Number"><b>Mobile Number</b></label>
+                                </td>
+                                <td>
+                                    @Html.ValidationMessageFor(model => model.CandidateContactNumber, "", new { @class = "text-danger" })
+                                    <input type="text" placeholder="Mobile Number" asp-for="CandidateContactNumber" class="form-control" />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="Name"><b>Offer Release Date</b></label>
+
+                                </td>
+                                <td>
+                                    <input type="date" id="ord" asp-for="Offer_Date" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.Offer_Date, "", new { @class = "text-danger" })
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="Name"><b>Date of Joining</b></label>
+
+                                </td>
+                                <td>
+                                    <input type="date" id="doj" asp-for="DateOfJoining" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.DateOfJoining, "", new { @class = "text-danger" })
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <label for="exdays"><b>Link Expiration Days</b></label>
+                                </td>
+                                <td>
+                                    
+                                    <input type="number" id="exdays" asp-for="Exp_Days" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.Exp_Days, "", new { @class = "text-danger" })
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="exdate"><b>Link Expiration Date</b></label>
+                                </td>
+                                <td>
+                                <input type="text" id="exdate" readonly required asp-for="LinkExpiration" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.LinkExpiration, "", new { @class = "text-danger" })    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input id="genlink" type="submit" class="btn btn-danger" value="Generate Link"></td>
+                            </tr>
+
+                       </table>
+
+                        
+                     
+
+                        <div class="clearfix">
+
+                            
+                        </div>
+                    </div>
+                </form>
+            <label> @ViewData["Error"] </label>
+
+            </div>
+
+
+
+
+        <div class="col-md-2"></div>
+
+        </div>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+$(window).on('load', function() {
+    //alert('All assets are loaded');
+    
+    var now = new Date();
+        //debugger;
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+    $('#doj').attr('min', today); 
+});
+
+document.getElementById("genlink").addEventListener("click", function() {
+
+    //$('#genlink').prop('disabled', true);
+
+});
+
+document.getElementById("doj").addEventListener("blur", function() {
+    
+  //let today = new Date().toLocaleDateString('en-US');
+    //alert(document.getElementById("dob").value);
+    var currentDate = new Date()
+    var day = currentDate.getDate()
+    var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()
+    var today = year + "-" + month + "-" + day;
+
+    var exdisplayspt = (document.getElementById("doj").value).split("-");
+    var exdisplay = exdisplayspt[2] + "-" + exdisplayspt[1] + "-" + exdisplayspt[0]
+    //alert(today);
+
+
+function treatAsUTC(date) {
+    var result = new Date(date);
+    result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+    return result;
+}
+
+function daysBetween(startDate, endDate) {
+    var millisecondsPerDay = 24 * 60 * 60 * 1000;
+    return (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
+}
+
+    document.getElementById("exdays").value = parseInt(daysBetween(today, document.getElementById("doj").value));
+    document.getElementById("exdate").value = exdisplay;
+//alert(parseInt(daysBetween(today, document.getElementById("dob").value)));    
+
+});
+
+function addDays(date, days) {
+  const copy = new Date(Number(date))
+  copy.setDate(date.getDate() + days)
+  return copy
+}
+
+
+document.getElementById("exdays").addEventListener("blur", function() {
+
+    const date = new Date();
+    const days = Number(document.getElementById("exdays").value);
+    const newDate = addDays(date, days);
+    //debugger;
+        let exdisplayspt = (newDate.toLocaleDateString('en-US')).split("/");
+        let exdisplay = exdisplayspt[1] + "-" + exdisplayspt[0] + "-" + exdisplayspt[2]
+        document.getElementById("exdate").value = exdisplay;
+});
+
+</script>
+
+
+
+

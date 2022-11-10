@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewData["Title"] = "login";
+}
+
+<h1>Index</h1>
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-3">
+            <h2 class="text-primary">Login Credit</h2>
+            <br />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="row mb-3">
+            <label for="Employee Id"></label>
+            <input type="text" class="form-control" id="EmpId"  placeholder="Employee Id" />
+        </div>
+        <div class="row  mb-3">
+            <label for="Password"></label>
+            <input type="password" class="form-control" id="Pwd" maxlength="16" />
+        </div>
+        <button type="button" class="btn btn-primary" id="btnLogin" onclick="login()">Login</button>
+    </div>
+    <a asp-action="Index">Forgot Password</a>
+</form>
+<script type="text/javascript">
+function login() {
+    var res = validate();
+    if (res == false) {
+        return false;
+    }
+    else {
+        debugger;
+        var empObj = {
+            EmployeeId: $('#EmpId').val(),
+            Password: $('#Pwd').val()
+        };
+        $.ajax({
+            url: "https://localhost:7151/api/Login",
+            type: "Post",
+            contentType: "application/json;charset=UTF-8",
+            data: JSON.stringify(empObj),
+            dataType: "json",
+            success: function(result) {
+                console.log(result);
+                alert(response.responseText);
+                
+            },
+            failure: function(result) {
+                alert(response.responseText);
+                
+            },
+             error: function (response) {
+                        alert(response.responseText);
+             }
+        })
+    }
+}
+
+    function validate() {
+        var isValid = true;
+
+        if ($('#EmpId').val().trim() == "") {
+            $('#EmpId').css('border-color', 'Red');
+            isValid = false;
+            alert('Please Enter Your Employee Id');
+        }
+        else {
+            $('#EmpId').css('border-color', 'lightgrey');
+        }
+        if ($('#Pwd').val().trim() == "") {
+            $('#Pwd').css('border-color', 'Red');
+            isValid = false;
+            alert('Please Enter Your Password');
+        }
+        
+        
+        return isValid;
+    }  
+
+
+
+
+</script>
+

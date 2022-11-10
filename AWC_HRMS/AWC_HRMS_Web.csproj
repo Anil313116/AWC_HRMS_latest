@@ -1,0 +1,222 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\script.js" />
+    <None Remove="Views\Shared\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Shared\script.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Views\Shared\style.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\CandidateImages\CustomerSolicitationCallReport.pdf" />
+    <None Include="wwwroot\CandidateImages\MenuNew1.docx" />
+    <None Include="wwwroot\js\popper.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\woops-toast\dist\script.js" />
+    <None Include="wwwroot\lib\woops-toast\README.markdown" />
+    <None Include="wwwroot\lib\woops-toast\src\script.js" />
+    <None Include="wwwroot\Scripts\bootstrap.js" />
+    <None Include="wwwroot\Scripts\bootstrap.min.js" />
+    <None Include="wwwroot\Scripts\dataTablesScripts\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\Scripts\dataTablesScripts\jquery.dataTables.min.js" />
+    <None Include="wwwroot\Scripts\datetimepicker\jquery-1.12.4.js" />
+    <None Include="wwwroot\Scripts\datetimepicker\jqueryui.js" />
+    <None Include="wwwroot\Scripts\datetimexdsoft\build\jquery.datetimepicker.full.js" />
+    <None Include="wwwroot\Scripts\datetimexdsoft\build\jquery.datetimepicker.full.min.js" />
+    <None Include="wwwroot\Scripts\datetimexdsoft\build\jquery.datetimepicker.min.js" />
+    <None Include="wwwroot\Scripts\datetimexdsoft\jquery.datetimepicker.js" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.intellisense.js" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.js" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.min.js" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.min.map" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.slim.js" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="wwwroot\Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="wwwroot\Scripts\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.min.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\Scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\Scripts\modernizr-2.8.3.js" />
+    <None Include="wwwroot\Template\data\flot-data.js" />
+    <None Include="wwwroot\Template\data\morris-data.js" />
+    <None Include="wwwroot\Template\dist\js\sb-admin-2.js" />
+    <None Include="wwwroot\Template\dist\js\sb-admin-2.min.js" />
+    <None Include="wwwroot\Template\js\sb-admin-2.js" />
+    <None Include="wwwroot\Template\less\mixins.less" />
+    <None Include="wwwroot\Template\less\sb-admin-2.less" />
+    <None Include="wwwroot\Template\less\variables.less" />
+    <None Include="wwwroot\Template\vendor\bootstrap-social\bootstrap-social.less" />
+    <None Include="wwwroot\Template\vendor\bootstrap-social\bootstrap-social.scss" />
+    <None Include="wwwroot\Template\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\Template\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\Template\vendor\bootstrap\js\bootstrap.js" />
+    <None Include="wwwroot\Template\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <None Include="wwwroot\Template\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables-responsive\dataTables.responsive.js" />
+    <None Include="wwwroot\Template\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <None Include="wwwroot\Template\vendor\datatables\images\Sorting icons.psd" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.foundation.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.foundation.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.jqueryui.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.material.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.material.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.semanticui.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.uikit.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\dataTables.uikit.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\jquery.dataTables.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\Template\vendor\datatables\js\jquery.js" />
+    <None Include="wwwroot\Template\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <None Include="wwwroot\Template\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <None Include="wwwroot\Template\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <None Include="wwwroot\Template\vendor\flot\excanvas.js" />
+    <None Include="wwwroot\Template\vendor\flot\excanvas.min.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.colorhelpers.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.canvas.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.categories.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.crosshair.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.errorbars.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.fillbetween.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.image.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.navigate.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.pie.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.resize.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.selection.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.stack.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.symbol.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.threshold.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.flot.time.js" />
+    <None Include="wwwroot\Template\vendor\flot\jquery.js" />
+    <None Include="wwwroot\Template\vendor\font-awesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\Template\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Template\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\animated.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\core.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\extras.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\icons.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\larger.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\list.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\path.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\screen-reader.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\spinning.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\less\variables.less" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_extras.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_spinning.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\Template\vendor\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\Template\vendor\jquery\jquery.js" />
+    <None Include="wwwroot\Template\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\Template\vendor\metisMenu\metisMenu.js" />
+    <None Include="wwwroot\Template\vendor\metisMenu\metisMenu.min.js" />
+    <None Include="wwwroot\Template\vendor\morrisjs\morris.js" />
+    <None Include="wwwroot\Template\vendor\morrisjs\morris.min.js" />
+    <None Include="wwwroot\Template\vendor\raphael\raphael.js" />
+    <None Include="wwwroot\Template\vendor\raphael\raphael.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AWC_HRMS.DataAccessLayer\AWC_HRMS.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\AWC_HRMS.Models\AWC_HRMS.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Dashboard\DynamicTable\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,186 @@
+﻿@model AWC_HRMS.Models.CandidatePersonalDetails
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "CandidateBankDetails";
+     ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2" >
+
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-border a1" >
+        
+        <form asp-action="CandidateRegisterationDetail" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+            @*<h1 style="   font-family: Arial;font-size: 24pt;  font-weight: bold;"align="center">Bank Details</h1>*@
+            
+            
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.NewCId" />
+
+@*             <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center"><b>Personal Bank Details</b></p>
+                <hr style="border: 1px outset red">
+            
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankAccountHolderNamePri" class="control-label">Account Holder Name</label>
+                <input type="text" asp-for="BankAccountHolderNamePri" class="form-control" id="BankAccountHolderNamePri"   maxlength="20" />
+                <span asp-validation-for="BankAccountHolderNamePri" class="text-danger"></span>
+            </div>
+           
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankNamePri" class="control-label">Bank Name</label>
+                <input type="text" asp-for="BankNamePri" id="BankNamePri"  readonly class="form-control" value="@ViewBag.BankName" />
+               
+                <span asp-validation-for="BankNamePri" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="BankAccountNumberPri" class="control-label">Account Number</label>
+                <input  type="number" asp-for="BankAccountNumberPri" id="BankAccountNumberPri"   maxlength="20" class="form-control" />
+                <span asp-validation-for="BankAccountNumberPri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                  <div class="space"> </div>
+                <label asp-for="IfscCodePri" class="control-label"> IFSC Code</label>
+                <input type="text"  asp-for="IfscCodePri" id="IfscCodePri" maxlength="12" class="form-control" />
+                <span asp-validation-for="IfscCodePri" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankBranchAddressPri" class="control-label">Branch Address</label>
+                <input type="text" asp-for="BankBranchAddressPri" id="BankBranchAddressPri"   maxlength="50"class="form-control" />
+                <span asp-validation-for="BankBranchAddressPri" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="PassBookCancelChequePri" class="control-label"> PassBook / Cancel Cheque</label>
+                <input type="file" name="PassBookCancelChequePri" id="PassBookCancelChequePri"  asp-for="PassBookCancelChequePri" class="form-control" onchange="Filevalidation()" />
+
+            </div>
+
+            </div>*@
+            <br />
+
+             <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center"><b>Personal Bank Details</b></p>
+                <p align="center"><b>(Preferably ICICI Bank)</b></p>
+                <hr style="border: 1px outset red">
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankAccountHolderNameSec" class="control-label">Account Holder Name</label>
+                <input type="text" asp-for="BankAccountHolderNameSec" id="BankAccountHolderNameSec"  maxlength="20"class="form-control" />
+                <span asp-validation-for="BankAccountHolderNameSec" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankNameSec" class="control-label">Bank Name</label>
+                <input type="text" asp-for="BankNameSec" id="BankNameSec"  maxlength="20"class="form-control" />
+                <span asp-validation-for="BankNameSec" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankAccountNumberSec" class="control-label">Account Number</label>
+                <input type="text" asp-for="BankAccountNumberSec" id="BankAccountNumberSec"  maxlength="20"class="form-control" />
+                <span asp-validation-for="BankAccountNumberSec" class="text-danger"></span>
+            </div>
+
+              <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="IfscCodeSec" class="control-label">IFSC Code</label>
+                <input type="text" asp-for="IfscCodeSec" id="IfscCodeSec"  maxlength="20"class="form-control" />
+                <span asp-validation-for="IfscCodeSec" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="BankBranchAddressSec" class="control-label">Branch Address</label>
+                <input type="text" asp-for="BankBranchAddressSec" id="BankBranchAddressSec"   maxlength="50"class="form-control" />
+                <span asp-validation-for="BankBranchAddressSec" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="PassBookCancelChequeSec" class="control-label"> PassBook / Cancel Cheque</label>
+                <input type="file" name="PassBookCancelChequeSec" id="PassBookCancelChequeSec"  asp-for="PassBookCancelChequeSec" class="form-control" onchange="Filevalidation()" />
+                
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                
+                
+                @Html.ActionLink("Back", "CandidateRegisterationDetail_Employement", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+                <input type="submit" class="btn btn-info" value="Save" formaction="" />
+                @Html.ActionLink("Preview","AllCandidateDetails", new { id=ViewBag.myst },new{@id="form17next", @class = "btn btn-info"})
+
+            </div>
+            </br>
+
+            <div>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+        </div>
+        </form>
+       
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(window).on('load', function() {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.EmpVals2";
+        if (data != "") 
+        {
+
+            var sptval0 = data.split("|");
+
+
+            //document.getElementById("FresherExperienced").value = sptval0[0];
+            document.getElementById("BankAccountHolderNamePri").value = sptval0[1];
+            document.getElementById("BankNamePri").value = sptval0[2];
+            document.getElementById("BankAccountNumberPri").value = sptval0[3];
+            document.getElementById("IfscCodePri").value = sptval0[4];
+            document.getElementById("BankBranchAddressPri").value = sptval0[5];
+
+            document.getElementById("BankAccountHolderNameSec").value = sptval0[7];
+            document.getElementById("BankNameSec").value = sptval0[8];
+            document.getElementById("BankAccountNumberSec").value = sptval0[9];
+            document.getElementById("IfscCodeSec").value = sptval0[10];
+            document.getElementById("BankBranchAddressSec").value = sptval0[11];
+        }
+
+    });
+
+</script>
+

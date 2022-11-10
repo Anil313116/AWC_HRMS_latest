@@ -1,0 +1,549 @@
+﻿@model AWC_HRMS.Models.CandidateEducation
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+    ViewData["btn"] = "Save";
+     Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+<div style="visibility:hidden">
+ @ViewBag.myst
+ </div>
+
+<div class="row">
+
+    <div class="col-md-1 col-sm-12 Font_Color1">
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-borderless" style="background-color:#08708d;font-family:Gill Sans, sans-serif; color:black">
+        <center>Documents Upload</center>
+
+
+        <form asp-action="CandidateRegisterationDetail_DocumentImage" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+           @* <p id="size"></p>*@
+            <div class="form-group">
+                <div class="space"> </div>
+              
+               <input asp-for="CandidateId" type="hidden" value="@ViewBag.myst"/>
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="Aadhar_Image" class="control-label">Aadhar Image</label>
+                <input type="file" name="file9" required asp-for="Aadhar_Image" id="file8" class="form-control" onchange="Filevalidation8()" />
+                <span asp-validation-for="Aadhar_Image" class="text-danger"></span>
+                
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="PanCard_Image" class="control-label">PanCard Image</label>
+                <input type="file" name="file10" required asp-for="PanCard_Image" id="file9" class="form-control" onchange="Filevalidation9()" />
+                <span asp-validation-for="PanCard_Image" class="text-danger"></span>
+             
+            </div>
+
+             <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="Candidate_Image" class="control-label">Candidate Image</label>
+                <input type="file" name="file11" required asp-for="Candidate_Image" id="file10" class="form-control" onchange="Filevalidation10()" />
+                <span asp-validation-for="Candidate_Image" class="text-danger"></span>
+              
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="_10MarkSheet" class="control-label">10th Marksheet</label>
+                <input type="file" name="file1"  asp-for="_10MarkSheet" id="file" class="form-control" onchange="Filevalidation()" />
+               @* <span asp-validation-for="_10MarkSheet" class="text-danger"></span>
+                <span id="spnDocMsg" class="error" style="display: none;"></span>*@
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="_10DegreePassingCertificate" class="control-label">10th Degree</label>
+                <input type="file" name="file2"  asp-for="_10DegreePassingCertificate" id="file1" class="form-control" onchange="Filevalidation1()" />
+                <span asp-validation-for="_10DegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="_12MarkSheet" class="control-label">12th Marksheet</label>
+                <input type="file" name="file3" asp-for="_12MarkSheet"  id="file2" class="form-control" onchange="Filevalidation2()" />
+                <span asp-validation-for="_12MarkSheet" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="_12DegreePassingCertificate" class="control-label">12th Degree</label>
+                <input type="file" name="file4"  asp-for="_12DegreePassingCertificate" id="file3" class="form-control" onchange="Filevalidation3()" />
+                <span asp-validation-for="_12DegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="UgMarkSheet" class="control-label">Ug MarkSheet </label>
+                <input type="file" name="file5" asp-for="UgMarkSheet"  class="form-control" id="file4" onchange="Filevalidation4()" />
+                <span asp-validation-for="UgMarkSheet" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="UgDegreePassingCertificate" class="control-label">Ug DegreePassing Certificate</label>
+                <input type="file" name="file6"  asp-for="UgDegreePassingCertificate" id="file5" class="form-control" onchange="Filevalidation5()" />
+                <span asp-validation-for="UgDegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="PgMarkSheet" class="control-label">Pg MarkSheet</label>
+                <input type="file" name="file7" asp-for="PgMarkSheet"  id="file6" class="form-control" onchange="Filevalidation6()" />
+                <span asp-validation-for="PgMarkSheet" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <label asp-for="PgDegreePassingCertificate" class="control-label">Pg Degree Passing Certificate</label>
+                <input type="file" name="file8"  asp-for="PgDegreePassingCertificate" id="file7" class="form-control" onchange="Filevalidation7()" />
+                <span asp-validation-for="PgDegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <div class="space"> </div>
+                                
+                @Html.ActionLink("Back", "CandidateRegisterationDetail_Employement", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+                <input type="submit" value="@ViewData["btn"]" ID="btnSubmit" class="btn btn-info" onchange="" />
+                @Html.ActionLink("Preview","AllCandidateDetails", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+            </div>
+            </br>
+        </form>
+
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+
+
+    </div>
+</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+
+<style>
+
+
+    /*span {
+                    color: red;
+                    display:block;
+                    margin-top: 10px;
+                }*/
+</style>
+<script>
+
+  
+
+
+
+
+    $(function() {
+        $('#file').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#file").val('');
+            }
+        });
+    });
+
+    $(function() {
+        $('#file1').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file1").val('');
+            }
+        });
+    });
+    $(function() {
+        $('#file2').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file2").val('');
+            }
+        });
+    });
+    $(function() {
+        $('#file3').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+               swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file3").val('');
+            }
+        });
+    });
+    $(function() {
+        $('#file4').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file4").val('');
+            }
+        });
+    });
+    $(function() {
+        $('#file5').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+
+                $("#file5").val('');
+            }
+        });
+    });
+    $(function() {
+        $('#file6').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+              
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file6").val('');
+            }
+        });
+    });
+    $(function() {
+        $('#file7').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+               
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file7").val('');
+            }
+        });
+    });
+     $(function() {
+        $('#file8').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file8").val('');
+            }
+        });
+    });
+      $(function() {
+        $('#file9').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+               
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file9").val('');
+            }
+        });
+    });
+
+      $(function() {
+        $('#file10').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file10").val('');
+            }
+        });
+    });
+
+
+      $(function() {
+        $('#file11').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                
+                swal("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                $("#file11").val('');
+            }
+        });
+    });
+
+
+
+    Filevalidation = () => {
+
+
+        const fi = document.getElementById('file');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+
+
+
+
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+
+
+    }
+    Filevalidation1 = () => {
+        const fi = document.getElementById('file1');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    swal("File too Big, please select a file less than 4mb");
+                    $("#file1").val('');
+                    //} else if (file < 2048) {
+                    //    alert(
+                    //        "File too small, please select a file greater than 2mb");
+                    //    $("#file1").val('');
+                    //}
+                }
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation2 = () => {
+        const fi = document.getElementById('file2');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file2").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation3 = () => {
+        const fi = document.getElementById('file3');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file3").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation4 = () => {
+        const fi = document.getElementById('file4');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file4").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation5 = () => {
+        const fi = document.getElementById('file5');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file5").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation6 = () => {
+        const fi = document.getElementById('file6');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file6").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation7 = () => {
+        const fi = document.getElementById('file7');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file7").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation8 = () => {
+        const fi = document.getElementById('file8');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file8").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+       Filevalidation9 = () => {
+        const fi = document.getElementById('file9');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file9").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+     Filevalidation10 = () => {
+        const fi = document.getElementById('file10');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file10").val('');
+                } else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+</script>
+
+
+

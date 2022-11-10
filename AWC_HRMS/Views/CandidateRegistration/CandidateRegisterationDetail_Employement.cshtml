@@ -1,0 +1,766 @@
+﻿@model AWC_HRMS.Models.CandidateEmployement
+
+@using AWC_HRMS.Models
+
+
+@{
+    ViewData["Title"] = "CandidateEmployement"; ViewData["btn"] = "Save";
+    Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+<div class="row style=" padding-left: 80px;"">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+
+    @*<div class="col-md-4 col-sm-12 Font_Color1">
+    Personal Details
+    </div>
+    *@
+
+
+
+    <div class="col-md-10 col-sm-12 a1 " style="width:auto">
+
+        @*  margin-right: 150px;
+        margin-top: 10px;
+        margin-left: 80px;
+        height: auto;
+        width: auto;
+        *@
+
+        <form asp-action="CandidateRegisterationDetail_Employement" method="post" enctype="multipart/form-data" id="CreateForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+            <h1 style="   font-family: Arial;font-size: 34pt;  font-weight: bold;" align="center">   <center>Employement  Details</center></h1>
+            <hr>
+
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.NewCId" />
+
+            @*<div class="form-group">
+            <div class="space"> </div>
+            <label asp-for="CandidateId" class="control-label"></label>
+            <input asp-for="CandidateId" class="form-control" required />
+            <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div>
+            *@
+            <div class="form-group">
+
+                @* <label  class="form-check-label" asp-for="FresherExperienced" class="control-label">Work Experience</label>    
+
+                *@
+                <label asp-for="CandidateId" class="control-label">Work Experience</label>
+                </br>
+                <input class="form-check-input" type="radio" asp-for="FresherExperienced" value="Fresher" id="Fresher" required /> Fresher &nbsp;&nbsp;&nbsp;        
+                <input class="form-check-input" type="radio" asp-for="FresherExperienced" value="Experience" id="Experience" required /> Experienced &nbsp;&nbsp;&nbsp;      
+                <span asp-validation-for="FresherExperienced" class="text-danger"></span>
+
+            </div>
+            <div id="CaseFresher">
+                <div class="form-group">
+                    <div class="space"> </div>
+                    @*  <label asp-for="TotalExperiencedYear" class="control-label">Total Experienced in Year</label>*@  
+                    <label asp-for="TotalExperiencedYear" class="control-label">Total Experience in Year</label>
+                    <input type="text" asp-for="TotalExperiencedYear" placeholder="Total Experience in Year" class="form-control" maxlength="10" required id="TotalExperiencedYear" />
+                    <span asp-validation-for="TotalExperiencedYear" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="space"> </div>
+                    @*    <label asp-for="TotalExperiencedMonth" class="control-label">Total Experienced in Month</label>*@  
+                    <label asp-for="CandidateId" class="control-label">Total Experience in Month</label>
+                    <input type="text" asp-for="TotalExperiencedMonth" placeholder="Total Experience in Month" class="form-control" required maxlength="10" id="TotalExperiencedMonth" />
+                    <span asp-validation-for="TotalExperiencedMonth" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="space"> </div>
+                    @* <label asp-for="NoOfCompany" class="control-label">No of Company</label>*@  
+                    <label asp-for="CandidateId" class="control-label">Number of Past Experience</label>
+                    <input type="text" asp-for="NoOfCompany" placeholder="Number of past Experience" id="NoOfCompany" class="form-control" required maxlength="10" id="NoOfCompany" />
+                    <span asp-validation-for="NoOfCompany" class="text-danger"></span>
+
+                </div>
+
+                <hr />
+               @* <div style="font-family: Arial; font-size: 12pt;  font-weight: bold;">Employement Details</div>*@
+            
+               
+                
+            </div>
+
+            @* <input type="button" button class="btn btn-info" value="Add" onclick="addrow()" formaction="" />*@
+            <div class="form-group">
+                <div class="space"> </div>
+
+                @Html.ActionLink("Back", "CandidateRegisterationDetail_Qualification10", new { id=ViewBag.NewCId }, new{@class = "btn btn-info"})
+                <input type="submit" button class="btn btn-info" id="btnSave" value="Save" onclick="return btnsave();" formaction="" />
+                <!-- <input type="button" value="Preview" onclick="Response.redirect('CandidateRegisterationDetailNext')" class="btn button_color1" />-->
+                <!--Html.ActionLink("Preview", "AllCandidateDetails","Dashboard" ,new { canid=ViewBag.myst},new{class = "btn btn-info"})-->
+                @Html.ActionLink("Next","CandidateBankDetails", new { id=ViewBag.NewCId },new{@id="form15next",@class = "btn btn-info"})
+
+
+            </div>
+            <div
+                
+             <div id="newEmp">
+
+                                     <div class="container">
+       
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add Experience Detail</button><br /><br />
+        <table class="table table-bordered table-hover" id="tblEMP" style="background-color:white">
+            <thead>
+                <tr>
+             @*       <th>
+                        ID
+                    </th>*@
+                    <th>
+                        Name of Company
+                    </th>
+                    <th>
+                        Date of Joining
+                    </th>
+                    <th>
+                       Date of leaving
+                    </th>
+                    <th>
+                        Designation
+                    </th>
+                    <th>
+                      CTC
+                    </th>
+                    <th>
+                      Related Document
+                    </th>
+                     <th>
+                  Reason
+                    </th>
+                    
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <link href="~/css/bootstrap.css" rel="stylesheet" />
+                      <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+                    @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">&times;</span></button>*@
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Employee</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                           @* <label for="EmployeeId">Candidate ID</label>*@
+                            <input type="hidden" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="NameofCompany">Name of Company</label>
+                            <input type="text" class="form-control" id="NameOfCompany" placeholder="Company Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="DOJ">Date of Joining</label>
+                            <input type="date" class="form-control" id="DOJ" placeholder="Date of Joining" />
+                        </div>
+                        <div class="form-group">
+                            <label for="DOL">Date of Leaving</label>
+                            <input type="date" class="form-control" id="DOL" placeholder="Date of Leaving"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Designation">Designation</label>
+                            <input type="text" class="form-control" id="Designation" placeholder="Designation"/>
+                        </div>
+                         <div class="form-group">
+                            <label for="CTC">CTC</label>
+                            <input type="text" class="form-control" id="CTC" placeholder="CTC"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="RelatedDocument">Releiving Letter</label>
+                            <input type="file" class="form-control" id="RelatedDocument" placeholder="Related Document"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Reason">Reason</label>
+                            <input type="text" class="form-control" id="Reason" placeholder="if Releiving letter not Available"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return EmpAdd();">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="EmpUpdate();">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+
+        </div>
+            
+            </div>
+
+        </form>
+
+      
+       
+       @* <div>
+
+ <iframe name='myIframe' id='myIframe' width='700px' height='500px' src='/Test/Employee'></iframe>
+        </div>*@
+    </div>
+</div>
+ <div>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+        </div>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+ 
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 10pt;
+    }
+
+    .table {
+        font-family: Arial;
+        font-size: 7pt;
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+        font-weight: bold;
+    }
+
+        .table th {
+            font-size: 7pt;
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .table th, .table td {
+            padding: 2px;
+            border: 1px solid #ccc;
+        }
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+<script type="text/javascript">
+function btnsave() {
+
+     var rowCount = $("#tblEMP tr").length;
+     var realcount =rowCount-1
+     var number= $("#NoOfCompany").val();
+            //alert('table Count '+realcount); 
+            //alert('text Count '+number); 
+    if (number == realcount) {
+        //alert('Ok');
+        return true;
+        debugger;
+        emploadData();
+    }
+    else {//alert(' not ok'); 
+    }
+
+    if (number > realcount) {
+
+        alert('Number of Past Experience/s Cannot be less than Details Shared');
+    }
+
+    else if (number < realcount) {
+
+        alert('Number of Past Experience/s Cannot be more than Details Shared');
+    }
+    else {  return true;}
+
+    return false;
+
+}
+    
+
+
+        $('input[name=FresherExperienced]').click(function() {
+            if ($(this).val() == "Fresher") {
+                $("#TotalExperiencedYear").val('0');
+                $("#TotalExperiencedMonth").val('0');
+                $("#NExp").val('0');
+                $("#NoOfCompany").val('0');
+
+                $('#CaseFresher').hide();
+                $('#newEmp').hide();
+                
+            } else {
+                $('#CaseFresher').show();
+                $("#TotalExperiencedYear").val('');
+                $("#TotalExperiencedMonth").val('');
+                $("#NExp").val(' ');
+                $("#NoOfCompany").val('');
+                  $('#newEmp').show();
+            }
+        });
+     
+   // lastBatch();
+    $(window).on('load', function() {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.EmpVals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+
+            //document.getElementById("FresherExperienced").value = sptval0[0];
+            document.getElementById("TotalExperiencedYear").value = sptval0[1];
+            document.getElementById("TotalExperiencedMonth").value = sptval0[2];
+            document.getElementById("NoOfCompany").value = sptval0[3];
+
+
+              if (sptval0[0] == "Fresher") {
+                document.getElementById("Fresher").checked = true;
+            }
+            else if (sptval0[0] == "Experience") {
+                document.getElementById("Experience").checked = true;
+            }
+            else {
+                //document.getElementById("Other").checked = true;
+            }
+        }
+
+    });
+
+
+//   
+/// <reference path="jquery-1.9.1.intellisense.js" />
+//Load Data in Table when documents is ready
+$(document).ready(function () {
+    //loadData();
+    emploadData()
+});
+
+//Load Data function
+function loadData() {
+    $.ajax({
+        url: "/Test/List",
+        type: "GET",
+        //contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            debugger;
+            console.log(result);
+            var html = '';
+            $.each(result, function (key, item) {
+                html += '<tr>';
+                html += '<td>' + item.employeeID + '</td>';
+                html += '<td>' + item.name + '</td>';
+                html += '<td>' + item.age + '</td>';
+                html += '<td>' + item.state + '</td>';
+                html += '<td>' + item.country + '</td>';
+                html += '<td><a href="#" onclick="return getbyID(' + item.employeeID + ')">Edit</a> | <a href="#" onclick="Delele(' + item.employeeID + ')">Delete</a></td>';
+                html += '</tr>';
+            });
+            $('.tbody').html(html);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function emploadData() {
+     let canid= $("#CandidateId").val();
+    debugger;
+    $.ajax({
+        url: "/Test/EmpList",
+        type: "GET",
+        //contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        data: { id: canid},
+        success: function (result) {
+            debugger;
+            console.log(result);
+            var html = '';
+            $.each(result, function (key, item) {
+                html += '<tr>';
+                //html += '<td>' + item.id + '</td>';
+                html += '<td>' + item.nameOfCompany + '</td>';
+                html += '<td>' + item.doj + '</td>';
+                html += '<td>' + item.dol + '</td>';
+                html += '<td>' + item.designation + '</td>';
+                  html += '<td>' + item.ctc + '</td>';
+                    html += '<td>' + item.relatedDocument + '</td>';
+                    html += '<td>' + item.reason + '</td>';
+                html += '<td><a href="#" onclick="return getbyEmployeeID(' + item.id + ')">Edit</a> | <a href="#" onclick="EmpDelete(' + item.id + ')">Delete</a></td>';
+                html += '</tr>';
+            });
+            $('.tbody').html(html);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+
+function EmpAdd() {
+    var res = validate();
+    if (res == false) {
+        return false;
+    }
+    var empObj = {
+          //var canid= $("#CandidateId").val();
+        CandidateId: $('#CandidateId').val(),
+        NameOfCompany: $('#NameOfCompany').val(),
+        DOJ: $('#DOJ').val(),
+        DOL: $('#DOL').val(),
+        Designation: $('#Designation').val(),
+        CTC: $('#CTC').val(),
+        RelatedDocument: $('#RelatedDocument').val(),
+        Reason: $('#Reason').val()
+    };
+    debugger;
+    
+    $.ajax({
+        url: "/Test/EmpAdd",
+        data:{ emp: empObj },
+        type: "POST",
+        //contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            emploadData();
+            alert('Record Saved Successfully');
+              $('#NameOfCompany').val("");
+    $('#DOJ').val("");
+    $('#DOL').val("");
+    $('#Designation').val("");
+    $('#CTC').val("");
+    $('#RelatedDocument').val("");
+     $('#Reason').val("");
+
+           //$('#myModal').modal('hide');
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+//Add Data Function 
+function Add() {
+    var res = validate();
+    if (res == false) {
+        return false;
+    }
+    var empObj = {
+        EmployeeID: $('#EmployeeID').val(),
+        Nam: $('#Name').val(),
+        Age: $('#Age').val(),
+        State: $('#State').val(),
+        Country: $('#Country').val()
+    };
+    
+    $.ajax({
+        url: "/Test/Add",
+        data:{ emp: empObj },
+        type: "POST",
+        //contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            loadData();
+            alert('Record Saved Successfully');
+              $('#Name').val("");
+    $('#Age').val("");
+    $('#State').val("");
+    $('#Country').val("");
+
+           //$('#myModal').modal('hide');
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function getbyEmployeeID(ID) {
+    $('#Name').css('border-color', 'lightgrey');
+    $('#Age').css('border-color', 'lightgrey');
+    $('#State').css('border-color', 'lightgrey');
+    $('#Country').css('border-color', 'lightgrey');
+    debugger;
+    $.ajax({
+        url: "/Test/getbyEmplID/" + ID,
+        typr: "GET",
+        //contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+            $('#EmployeeID').val(result.id);
+            $('#NameOfCompany').val(result.nameOfCompany);
+            $('#DOJ').val(result.doj);
+            $('#DOL').val(result.dol);
+            $('#Designation').val(result.designation);
+            $('#CTC').val(result.ctc);
+            $('#RelatedDocument').val("");
+            $('#Reason').val(result.reason);
+
+            $('#myModal').modal('show');
+            $('#btnUpdate').show();
+            $('#btnAdd').hide();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+    return false;
+}
+
+function EmpUpdate() {
+    var res = validate();
+    if (res == false) {
+        return false;
+    }
+    var empObj = {
+        Id: $('#EmployeeID').val(),
+        NameOfCompany: $('#NameOfCompany').val(),
+        DOJ: $('#DOJ').val(),
+        DOL: $('#DOL').val(),
+         Designation: $('#Designation').val(),
+         CTC: $('#CTC').val(),
+
+        RelatedDocument: $('#RelatedDocument').val(),
+        Reason: $('#Reason').val(),
+    };
+    debugger;
+    $.ajax({
+        url: "/Test/EmpUpdateChanges",
+        data: { emp: empObj },
+        type: "POST",
+        //contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            emploadData();
+            $('#myModal').modal('hide');
+            $('#EmployeeID').val("");
+            $('#Name').val("");
+            $('#Age').val("");
+            $('#State').val("");
+            $('#Country').val("");
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+function EmpDelete(ID) {
+    var ans = confirm("Are you sure you want to delete this Record?");
+    if (ans) {
+        $.ajax({
+            url: "/Test/EmployeeDelete/" + ID,
+            type: "POST",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                emploadData();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+}
+
+//Function for getting the Data Based upon Employee ID
+function getbyID(EmpID) {
+    $('#Name').css('border-color', 'lightgrey');
+    $('#Age').css('border-color', 'lightgrey');
+    $('#State').css('border-color', 'lightgrey');
+    $('#Country').css('border-color', 'lightgrey');
+    debugger;
+    $.ajax({
+        url: "/Test/getbyID/" + EmpID,
+        typr: "GET",
+        //contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+            $('#EmployeeID').val(result.employeeID);
+            $('#Name').val(result.name);
+            $('#Age').val(result.age);
+            $('#State').val(result.state);
+            $('#Country').val(result.country);
+
+            $('#myModal').modal('show');
+            $('#btnUpdate').show();
+            $('#btnAdd').hide();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+    return false;
+}
+
+//function for updating employee's record
+function Update() {
+    var res = validate();
+    if (res == false) {
+        return false;
+    }
+    var empObj = {
+        EmployeeID: $('#EmployeeID').val(),
+        Name: $('#Name').val(),
+        Age: $('#Age').val(),
+        State: $('#State').val(),
+        Country: $('#Country').val(),
+    };
+    debugger;
+    $.ajax({
+        url: "/Test/Update",
+        data: { emp: empObj },
+        type: "POST",
+        //contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            loadData();
+            $('#myModal').modal('hide');
+            $('#EmployeeID').val("");
+            $('#Name').val("");
+            $('#Age').val("");
+            $('#State').val("");
+            $('#Country').val("");
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+//function for deleting employee's record
+function Delele(ID) {
+    var ans = confirm("Are you sure you want to delete this Record?");
+    if (ans) {
+        $.ajax({
+            url: "/Test/Delete/" + ID,
+            type: "POST",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                loadData();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+}
+
+//Function for clearing the textboxes
+function clearTextBox() {
+    $('#EmployeeID').val("");
+    $('#Name').val("");
+    $('#Age').val("");
+    $('#State').val("");
+    $('#Country').val("");
+    $('#btnUpdate').hide();
+    $('#btnAdd').show();
+    $('#Name').css('border-color', 'lightgrey');
+    $('#Age').css('border-color', 'lightgrey');
+    $('#State').css('border-color', 'lightgrey');
+    $('#Country').css('border-color', 'lightgrey');
+}
+//Valdidation using jquery
+function validate() {
+
+
+
+    var isValid = true;
+    if ($('#NameOfCompany').val().trim() == "") {
+        $('#NameOfCompany').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#NameOfCompany').css('border-color', 'lightgrey');
+    }
+    if ($('#DOJ').val().trim() == "") {
+        $('#DOJ').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#DOJ').css('border-color', 'lightgrey');
+    }
+    if ($('#DOL').val().trim() == "") {
+        $('#DOL').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#DOL').css('border-color', 'lightgrey');
+    }
+    if ($('#Designation').val().trim() == "") {
+        $('#Designation').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#Designation').css('border-color', 'lightgrey');
+    }
+
+    if ($('#CTC').val().trim() == "") {
+        $('#CTC').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#CTC').css('border-color', 'lightgrey');
+    }
+
+    // if ($('#RelatedDocument').val().trim() == "") {
+    //    $('#RelatedDocument').css('border-color', 'Red');
+    //    isValid = false;
+    //}
+    //else {
+    //    $('#RelatedDocument').css('border-color', 'lightgrey');
+    //}
+
+     if ($('#Reason').val().trim() == "") {
+        $('#Reason').css('border-color', 'Red');
+        isValid = false;
+    }
+    else {
+        $('#Reason').css('border-color', 'lightgrey');
+    }
+
+    return isValid;
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+

@@ -1,0 +1,88 @@
+﻿
+@model AWC_HRMS.Models.LinkGenerationTable
+@{
+    ViewData["Title"] = "CToken";
+    //Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+
+}
+
+
+<div class="container" style="max-width:1000px;">
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+           
+                <div class="col-md-6" style="text-align:right;">
+        @*@if (User.Identity.IsAuthenticated)
+        {
+        
+             <span class="text-success font-weight-bold p-2">Welcome &nbsp; @User.Identity.Name</span><a class="btn btn-success" asp-action="Logout" asp-controller="UserLogin">Logout</a>
+       
+        }*@
+        </div>
+            </div>
+
+      
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <label style="font-size20px; color:brown;"> @ViewData["Error"] </label>
+                <form method="post" style="border:1px solid black; font-weight:bolder;" >
+                <div class="container" style="max-width:500px;">
+                        
+                        <center><h1>Validate Code</h1> </center>
+                        <p></p>
+
+
+                       <table class="">
+                            
+                            <tr>
+                                <td>
+                                    <label asp-for="VerificationCode"> Verification Code</label> &nbsp;
+                                </td>
+                                <td>
+                     
+                                   <input asp-for="VerificationCode" style='text-transform:uppercase' maxlength="12" class="form-control" />
+                                   <span asp-validation-for="VerificationCode" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                            </tr>
+                            
+                            <tr style="height:100px;">
+                                <td ></td>
+                                <td><button class="btn btn-primary btn-lg" type="submit">Authenticate</button></td>
+
+                            <td><input type="reset" class="btn btn-primary btn-lg ms-2" value="Cancel" /></td>
+                            </tr>
+                            @*<tr><label>Please enter latest token for authentication</label></tr>*@
+                        <tr>
+                            
+                        </tr>
+                       </table>
+
+                        
+                     
+                        <div class="clearfix">
+
+                            
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+<!--<label> ViewData["Error"] </label>-->
+    

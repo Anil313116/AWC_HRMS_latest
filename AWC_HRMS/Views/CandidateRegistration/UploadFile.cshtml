@@ -1,0 +1,118 @@
+﻿@model AWC_HRMS.Models.CandidateEducation
+
+
+@{
+    ViewData["Title"] = "Uploaded";
+    ViewData["btn"] = "Save";
+}
+
+Respose.write "Bretval0: " + @ViewBag.mys
+
+
+<div class="row">
+    <div class="col-md-3 col-sm-12 Font_Color2" >
+
+            ON Boarding Form
+
+        </div>
+
+        <div class="col-md-4 col-sm-12 Font_Color1">
+
+            Personal Details
+
+        </div>
+
+
+
+
+    <div class="col-md-5 col-sm-12 table-borderless" style="background-color:#08708d;font-family:Gill Sans, sans-serif; color:white">
+        
+        <form asp-action="UploadFile" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+
+
+           
+                  <input asp-for="CandidateId" type="hidden" value="@ViewBag.myst" />
+  
+           
+           
+
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10MarkSheet"  class="control-label">10MarkSheet</label>
+                <input  type="file" name="file" class="form-control" required />
+                <span asp-validation-for="_10MarkSheet" class="text-danger"></span>
+            </div>
+
+              <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_10DegreePassingCertificate" class="control-label">10DegreePassingCertificate</label>
+                <input  type="file" name="file" class="form-control" required />
+                <span asp-validation-for="_10DegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+            
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_12MarkSheet" class="control-label">12MarkSheet</label>
+                <input  type="file" name="file" class="form-control" required />
+                <span asp-validation-for="_12MarkSheet" class="text-danger"></span>
+            </div>
+
+              <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="_12DegreePassingCertificate" class="control-label">12DegreePassingCertificate</label>
+                <input  type="file" id="postedFiles2" class="form-control" required />
+                <span asp-validation-for="_12DegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+             
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgMarkSheet" class="control-label">UgMarkSheet</label>
+                <input asp-for="UgMarkSheet" type="file" id="UgMarkSheet" class="form-control" required />
+                <span asp-validation-for="UgMarkSheet" class="text-danger"></span>
+            </div>
+
+              <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="UgDegreePassingCertificate" class="control-label">UgDegreePassingCertificate</label>
+                <input asp-for="UgDegreePassingCertificate" type="file" id="UgDegreePassingCertificate" class="form-control" required />
+                <span asp-validation-for="UgDegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+
+            
+             <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgMarkSheet" class="control-label">PgMarkSheet</label>
+                <input asp-for="PgMarkSheet" type="file" id="PgMarkSheet" class="form-control" required />
+                <span asp-validation-for="PgMarkSheet" class="text-danger"></span>
+            </div>
+
+              <div class="form-group">
+                 <div class="space"> </div>
+                <label asp-for="PgDegreePassingCertificate" class="control-label">PgDegreePassingCertificate</label>
+                <input asp-for="PgDegreePassingCertificate" type="file" id="PgDegreePassingCertificate" class="form-control" required />
+                <span asp-validation-for="PgDegreePassingCertificate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="space"> </div>
+                <input type="submit" value="@ViewData["btn"]" class="btn button_color" />
+                
+                <input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationDetailNext')" class="btn button_color1" />
+                @Html.ActionLink("Next", "CandidateRegisterationDetailQualification", new { canid=ViewBag.myst })
+            </div>
+             </br>
+        </form>
+        @if(@ViewData["reason"]==null)
+{
+    
+}
+else{
+<div class="alert alert-success text-center">@ViewData["reason"]</div>
+}
+        
+    </div>
+</div>

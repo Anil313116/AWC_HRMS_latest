@@ -1,0 +1,334 @@
+﻿@model AWC_HRMS.Models.CandidatePersonalDetails
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetailNext";
+    Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+
+}
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+
+<hr />
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+
+    <div class="col-md-8 col-sm-12 table-borderless a1" >
+        <form asp-action="CandidateRegisterationDetailNext" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h1 style="   font-family: Arial;font-size: 34pt;  font-weight: bold;" align="center">More Details</h1>
+            <hr>
+
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" value="@ViewBag.NewCId" />
+
+            <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center"><b>Emergency Details</b></p>
+                <hr style="border: 1px outset red">
+                <div class="form-group">
+                    <label asp-for="EmergencyContactName" class="control-label">Contact Name</label>
+                    <input asp-for="EmergencyContactName" id="EmergencyContactName" class="form-control" required maxlength="10" />
+                    <span asp-validation-for="EmergencyContactName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmergencyContactNo" class="control-label">Contact Number</label>
+                    <input type="text" asp-for="EmergencyContactNo" id="EmergencyContactNo" class="form-control" required maxlength="10" />
+                    <span asp-validation-for="EmergencyContactNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmergencyContactRelation" class="control-label">Contact Relation</label>
+                    <input type="text" asp-for="EmergencyContactRelation" id="EmergencyContactRelation" class="form-control" required maxlength="10" />
+                    <span asp-validation-for="EmergencyContactRelation" class="text-danger"></span>
+                </div>
+                </br>
+            </div>
+
+            <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center"><b>Statutory Requirement</b></p>
+                <hr style="border: 1px outset red">
+                <table  align="center" style="padding: 2px;">
+                    <tr>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="UANNumber" class="control-label" align="center">UAN Number</label>
+                                <input type="text" asp-for="UANNumber" id="UANNumber" class="form-control" required maxlength="20" />
+                                <span asp-validation-for="UANNumber" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="LastpfDate" class="control-label" align="center">Last Working Date</label>
+                                <input type="date" asp-for="LastpfDate" id="LastpfDate" class="form-control" required />
+                                <span asp-validation-for="LastpfDate" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center"><b>KYC Details</b></p>
+                <hr style="border: 1px outset red">
+                <table  align="center" style="padding: 2px;">
+                    <tr>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="AadharNumber" class="control-label" align="center">Aadhar Number</label>
+                                <input type="text" asp-for="AadharNumber" id="AadharNumber" class="form-control" required maxlength="20" />
+                                <span asp-validation-for="AadharNumber" class="text-danger"></span>
+                            </div>
+                        </td>
+
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="AadharImage" class="control-label">Upload Image </label>
+                     <input type="file" asp-for="AadharImage" name="AadharImage" id="AadharImage" class="form-control"  onchange="Filevalidation()" />
+                                @*<span asp-validation-for="AadharImage" class="text-danger"></span>*@
+                            </div>
+
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="PanNumber" class="control-label">Pan Number</label>
+                                <input type="text" asp-for="PanNumber" id="PanNumber" class="form-control" maxlength="10" />
+                                <span asp-validation-for="PanNumber" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="PanCardImage" class="control-label">Upload Image</label>
+                                <input type="file" asp-for="PanCardImage" id="PanCardImage" class="form-control"  onchange="Filevalidation1()"  />
+                                @*<span asp-validation-for="PanCardImage" class="text-danger"></span>*@
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="PassportNumber" class="control-label">Passport Number</label>
+                                <input type="text" asp-for="PassportNumber" id="PassportNumber" class="form-control" maxlength="30" />
+                                <span asp-validation-for="PassportNumber" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td width="50%">
+                            <div class="form-group">
+                                <label asp-for="PassportImage" class="control-label">Upload Image</label>
+                                <input type="file" asp-for="PassportImage" id="PassportImage" class="form-control"  onchange="Filevalidation2()"  />
+                               @* <span asp-validation-for="PassportImage" class="text-danger"></span>*@
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </br>
+            <div class="form-group">
+                <div class="space"> </div>
+                @*@Html.ActionLink("Back", "CandidateRegisterationDetail", new { /*id=*/})*@
+                <!--<input type="submit" value="Back" formaction=""  class="btn button_color" />-->
+                @Html.ActionLink("Back", "CandidateRegisterationDetail", new { id=ViewBag.NewCId },new{@class = "btn btn-info"})
+
+                <input type="submit" value="Save" formaction="" class="btn btn-info" />
+                @Html.ActionLink("Next", "CandidateRegisterationDetailAddress", new { id=ViewBag.NewCId },new{@id="form3next",@class = "btn btn-info"})
+
+            </div>
+
+        </form>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(window).on('load', function() {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.NextVals2";
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+            
+            document.getElementById("EmergencyContactName").value = sptval0[18];
+            document.getElementById("EmergencyContactNo").value = sptval0[19];
+            document.getElementById("EmergencyContactRelation").value = sptval0[20];
+            document.getElementById("AadharNumber").value = sptval0[22];
+            document.getElementById("PanNumber").value = sptval0[23];
+            document.getElementById("PassportNumber").value = sptval0[24];
+            document.getElementById("UANNumber").value = sptval0[30];
+
+            var pfdt = sptval0[31].split(" ");
+            var pfdt1 = pfdt[0].split("-");
+            document.getElementById("LastpfDate").value = pfdt1[2] + "-" + pfdt1[1] + "-" + pfdt1[0];
+
+        }
+
+    });
+
+
+      Filevalidation = () => {
+
+
+        const fi = document.getElementById('AadharImage');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#file").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+
+
+
+
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+
+
+    }
+
+
+     $(function() {
+        $('#AadharImage').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#AadharImage").val('');
+            }
+        });
+    });
+
+     Filevalidation1 = () => {
+
+
+        const fi = document.getElementById('PanCardImage');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#PanCardImage").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+
+
+
+
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+
+
+    }
+
+
+     $(function() {
+        $('#PanCardImage').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#AadharImage").val('');
+            }
+        });
+    });
+
+      Filevalidation2 = () => {
+
+
+        const fi = document.getElementById('PassportImage');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#PanCardImage").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+
+
+
+
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+
+
+    }
+
+
+     $(function() {
+        $('#PassportImage').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#AadharImage").val('');
+            }
+        });
+    });
+
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>

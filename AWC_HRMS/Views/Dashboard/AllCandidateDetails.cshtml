@@ -1,0 +1,735 @@
+﻿@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+@using AWC_HRMS.Models;
+@model List<CandidatePersonalDetails>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+*@
+
+@{
+    //Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+
+    String mstdata = @ViewBag.Vals0;
+    String edudata = @ViewBag.Vals1;
+    String empdata = @ViewBag.Vals2;
+
+        if (mstdata != "")
+        {
+            String[] sptval0 = mstdata.Split("|");
+    <form>
+            <div class="form-group row border">
+            <label  class="col-sm-12 col-form-label"><b>Candidate's Personal Details</b></label>
+            </div>
+                  <div class="form-group row ">
+
+                  <div id="CandidateId" class="col-sm-4">
+                  116
+                  </div>
+
+                    <label  class="col-sm-2 col-form-label">Name</label>
+                    <div id="CandidateName" class="col-sm-4">
+                      @sptval0[1].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Email Address</label>
+                    <div class="col-sm-4"  id="CandidateEmail">
+                      @sptval0[2].Trim()
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Father Name</label>
+                    <div class="col-sm-4">
+                      @sptval0[10].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Date of Birth</label>
+                    <div class="col-sm-4">
+                      @sptval0[8].Trim()
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Contact Number</label>
+                    <div class="col-sm-4" id="CandidateContactNumber">
+                      @sptval0[3].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Marital Status</label>
+                    <div class="col-sm-4">
+                      @sptval0[9].Trim()
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Aadhar Number</label>
+                    <div class="col-sm-4">
+                      @sptval0[26].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">PAN Number</label>
+                    <div class="col-sm-4">
+                      @sptval0[27].Trim()
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Passport Number</label>
+                    <div class="col-sm-4">
+                      @sptval0[28].Trim()
+                    </div>
+                  </div>
+
+                <div class="form-group row">
+                   <label  class="col-sm-2 col-form-label">Candidate Image</label>
+                <table>                                                  
+
+                 @foreach (CandidatePersonalDetails file in Model)
+            {
+                        <tr>
+                            <td>
+                              <img  id="u730_img1" src="data:image/jpeg;base64,@Convert.ToBase64String(file.CandidateImage)"width="150px" height="150px"   />
+                            </td>
+                        </tr>
+            }
+                </table>
+                </div>
+                
+                <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Aadhar Image</label>
+                <div class="col-sm-4">
+                <table>                                                  
+
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                    <tr>
+                        <td>
+                        <img  id="u730_img2" src="data:image/jpeg;base64,@Convert.ToBase64String(file.AadharImage) "width="150px" height="150px"   />
+                                 
+                        </td>
+                    </tr>
+        }
+                </table>
+                </div>
+                </div>
+
+                <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">PanCard Image</label>
+                <div class="col-sm-4">
+                <table>                                                  
+
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                    <tr>
+                        <td>
+                        <img  id="u730_img3" src="data:image/jpeg;base64,@Convert.ToBase64String(file.PanCardImage) "width="150px" height="150px"   />
+                        </td>
+                    </tr>
+        }
+                </table>
+                </div>
+                </div>
+                                                                            
+                <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Passport Image</label>
+                
+                <div class="col-sm-4">
+                <table>                                                  
+
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                    <tr>
+                        <td>
+                        <img  id="u730_img4" src="data:image/jpeg;base64,@Convert.ToBase64String(file.PassportImage)" width="150px" height="150px"   />
+                        </td>
+                    </tr>
+        }
+                </table>
+                </div>
+                </div>
+
+
+        <div class="form-group row border">
+            <label  class="col-sm-12 col-form-label"><b>Candidate Bank Details</b></label>
+            </div>
+
+            <div class="form-group row">
+            
+                <label  class="col-sm-2 col-form-label">BankAccountHolderName</label>
+                <div class="col-sm-4">
+                @sptval0[33].Trim()
+            </div>
+          
+
+            
+                <label  class="col-sm-2 col-form-label">BankNamePri</label>
+                <div class="col-sm-4">
+                @sptval0[34].Trim()
+            </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">BankAccountNumberPri</label>
+                <div class="col-sm-4">
+                @sptval0[35].Trim()
+            </div>
+            
+
+            
+                <label  class="col-sm-2 col-form-label">IFSCCodePri</label>
+                <div class="col-sm-4">
+                @sptval0[36].Trim()
+            </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">BankBranchAddressPri</label>
+                <div class="col-sm-4">
+                @sptval0[37].Trim()
+            </div>
+          
+
+            
+                <label  class="col-sm-2 col-form-label">Passbook/CancelChequePri</label>
+                <div class="col-sm-4">
+               <table>                                                  
+
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                    <tr>
+                        <td>
+                        <img  id="u730_img4" src="data:image/jpeg;base64,@Convert.ToBase64String(file.PassBookCancelChequePri)" width="150px" height="150px"   />
+                        </td>
+                    </tr>
+        }
+                </table>
+            </div>
+            </div>
+
+
+            
+        <div class="form-group row border">
+            <label  class="col-sm-12 col-form-label"><b>Candidate Bank Secondary Details</b></label>
+            </div>
+
+            <div class="form-group row">
+            
+                <label  class="col-sm-2 col-form-label">BankAccountHolderNamesec</label>
+                <div class="col-sm-4">
+                @sptval0[39].Trim()
+            </div>
+          
+
+            
+                <label  class="col-sm-2 col-form-label">BankNameSec</label>
+                <div class="col-sm-4">
+                @sptval0[40].Trim()
+            </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">BankAccountNumberSec</label>
+                <div class="col-sm-4">
+                @sptval0[41].Trim()
+            </div>
+            
+
+            
+                <label  class="col-sm-2 col-form-label">IFSCCodeSec</label>
+                <div class="col-sm-4">
+                @sptval0[42].Trim()
+            </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">BankBranchAddressSec</label>
+                <div class="col-sm-4">
+                @sptval0[43].Trim()
+            </div>
+          
+
+            
+                <label  class="col-sm-2 col-form-label">Passbook/CancelChequeSec</label>
+                <div class="col-sm-4">
+               <table>                                                  
+
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                    <tr>
+                        <td>
+                        <img  id="u730_img4" src="data:image/jpeg;base64,@Convert.ToBase64String(file.PassBookCancelChequeSec)" width="150px" height="150px"   />
+                        </td>
+                    </tr>
+        }
+                </table>
+            </div>
+            </div>
+
+        <div class="form-group row border">
+            <label  class="col-sm-12 col-form-label"><b>Candidate's Permanent Address Details</b></label>
+            </div>
+                  <div class="form-group row ">
+                    <label  class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-4">
+                      @sptval0[11].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">State Name</label>
+                    <div class="col-sm-4">
+                      @sptval0[13].Trim()
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">City Name</label>
+                    <div class="col-sm-4">
+                      @sptval0[15].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Pincode</label>
+                    <div class="col-sm-4">
+                      @sptval0[16].Trim()
+                    </div>
+                  </div>
+             <div class="form-group row border">
+            <label  class="col-sm-12 col-form-label"><b>Candidate's Current Address Details</b></label>
+            </div>
+                  <div class="form-group row ">
+                    <label  class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-4">
+                      @sptval0[17].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">State Name</label>
+                    <div class="col-sm-4">
+                      @sptval0[19].Trim()
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">City Name</label>
+                    <div class="col-sm-4">
+                      @sptval0[21].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Pincode</label>
+                    <div class="col-sm-4">
+                      @sptval0[22].Trim()
+                    </div>
+                  </div>
+    </form>
+        }
+
+   if (edudata != "")
+   {
+   String[] sptval1 = edudata.Split("|");
+   
+   
+  
+   
+    <form>
+            <div class="form-group row border">
+                <label  class="col-sm-12 col-form-label"><b>Candidate's Education Details</b></label>
+            </div>
+                  <div class="form-group row ">
+                  <label  class="col-sm-6 col-form-label"><b>Class 10th Records</b></label>
+                    <label  class="col-sm-2 col-form-label">School Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[1].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">Board Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[2].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Course Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[3].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Passing Year</label>
+                    <div class="col-sm-4">
+                      @sptval1[4].Trim()
+                    </div>
+                    
+                    <label  class="col-sm-2 col-form-label">Percentage/CGPA Scored</label>
+                    <div class="col-sm-4">
+                      @sptval1[5].Trim()
+                    </div>
+                  </div>
+                <div>
+                <label  class="col-sm-2 col-form-label">10th MarkSheet</label>
+                <div class="col-sm-4">
+                <table>
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                <tr>
+                <td>
+                <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.MarkSheet10)"width="150px" height="150px"   />
+                </td>
+                </tr>
+        }
+                </table>
+                </div>
+                </div>
+                <div>
+                <label  class="col-sm-2 col-form-label">10th Degree</label>
+                <div class="col-sm-4">
+                <table>
+                @foreach (CandidatePersonalDetails file in Model)
+        {
+                <tr>
+                <td>
+                <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.Certificate10)"
+                width="150px" height="150px"   />
+                                 
+                </td>
+                </tr>
+        }
+                </table>
+                </div>
+
+                </div>
+
+
+                  <div class="form-group row ">
+                  <label  class="col-sm-6 col-form-label"><b>Class 12th Records</b></label>
+                    <label  class="col-sm-2 col-form-label">School Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[8].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">Board Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[9].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Course Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[10].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Passing Year</label>
+                    <div class="col-sm-4">
+                      @sptval1[11].Trim()
+                    </div>
+                    
+                    <label  class="col-sm-2 col-form-label">Percentage/CGPA Scored</label>
+                    <div class="col-sm-4">
+                      @sptval1[12].Trim()
+                    </div>
+                  </div>
+                                 
+                  <div>
+                    <label  class="col-sm-2 col-form-label">12th MarkSheet</label>
+                    <div class="col-sm-4">
+                    <table>
+                    @foreach (CandidatePersonalDetails file in Model)
+            {
+                    <tr>
+                    <td>
+                    <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.MarkSheet12)"
+                    width="150px" height="150px"   />
+                                 
+                    </td>
+                    </tr>
+            }
+                    </table>
+                    </div>
+                    </div>
+                     <div>                      
+                    <label  class="col-sm-2 col-form-label">12th Degree</label>
+                    <div class="col-sm-4">
+                    <table>
+                    @foreach (CandidatePersonalDetails file in Model)
+            {
+                    <tr>
+                    <td>
+                    <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.Certificate12)"
+                    width="150px" height="150px"   />
+                    </td>
+                    </tr>
+            }
+                    </table>
+                    </div>
+                    </div>
+
+                  <div class="form-group row ">
+                  <label  class="col-sm-6 col-form-label"><b>Graduation Records</b></label>
+                    <label  class="col-sm-2 col-form-label">Collage Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[15].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">University Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[16].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Course Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[17].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Passing Year</label>
+                    <div class="col-sm-4">
+                      @sptval1[18].Trim()
+                    </div>
+                    
+                    <label  class="col-sm-2 col-form-label">Percentage/CGPA Scored</label>
+                    <div class="col-sm-4">
+                      @sptval1[19].Trim()
+                    </div>
+                  </div>
+                  <div>
+                  <label  class="col-sm-2 col-form-label">Graduation MarkSheet</label>
+                <div class="col-sm-4">
+                    <table>
+                    @foreach (CandidatePersonalDetails file in Model)
+            {
+                    <tr>
+                    <td>
+                    <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.MarkSheetUG)"
+                    width="150px" height="150px"   />
+                                 
+                    </td>
+                    </tr>
+            }
+                </table>
+                </div>
+                </div>
+                <div> 
+                <label  class="col-sm-2 col-form-label">Graduation Degree</label>
+                <div class="col-sm-4">
+                <table>
+                    @foreach (CandidatePersonalDetails file in Model)
+            {
+                    <tr>
+                    <td>
+                    <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.DegreeUG)"
+                    width="150px" height="150px"   />
+                    </td>
+                    </tr>
+            }
+                    </table>
+                </div>
+                </div>
+                  <div class="form-group row ">
+                  <label  class="col-sm-6 col-form-label"><b>Post Graduation Records</b></label>
+                    <label  class="col-sm-2 col-form-label">Collage Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[22].Trim()
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">University Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[23].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Course Name</label>
+                    <div class="col-sm-4">
+                      @sptval1[24].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Passing Year</label>
+                    <div class="col-sm-4">
+                      @sptval1[25].Trim()
+                    </div>
+                    
+                    <label  class="col-sm-2 col-form-label">Percentage/CGPA Scored</label>
+                    <div class="col-sm-4">
+                      @sptval1[26].Trim()
+                    </div>
+                  </div>
+                  <div>
+
+                <label  class="col-sm-2 col-form-label">PG_MarkSheet</label>
+                    <div class="col-sm-4">
+                    <table>
+                    @foreach (CandidatePersonalDetails file in Model)
+            {
+                    <tr>
+                    <td>
+                    <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.MarkSheetPG)"
+                    width="150px" height="150px"   />
+                                 
+                    </td>
+                    </tr>
+            }
+                </table>
+                </div>
+                </div>
+                <div>
+                <label  class="col-sm-2 col-form-label">PG_Degree</label>
+                <div class="col-sm-4">
+                    <table>
+                    @foreach (CandidatePersonalDetails file in Model)
+            {
+                    <tr>
+                    <td>
+                    <img  id="u730_img5" src="data:image/jpeg;base64,@Convert.ToBase64String(file.DegreePG)"
+                    width="150px" height="150px"   />
+                                 
+                    </td>
+                    </tr>
+            }
+                    </table>
+                </div>
+
+                </div>
+
+        </form>
+    }
+
+
+    if (empdata != "")
+    {
+
+
+        String[] sptval2 = empdata.Split("|");
+        <form>
+            <div class="form-group row border">
+            <label  class="col-sm-12 col-form-label"><b>Candidate's Employement Details</b></label>
+            </div>
+                  <div class="form-group row ">
+                  <label  class="col-sm-6 col-form-label"><b>@sptval2[1].Trim()</b></label>
+                    <label  class="col-sm-2 col-form-label">Experience (in Years)</label>
+                    <div class="col-sm-4">
+                      @sptval2[2].Trim()
+                    </div>
+                    
+                  </div>
+                  <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">Experience (in Months)</label>
+                    <div class="col-sm-4">
+                      @sptval2[3].Trim()
+                    </div>
+                    <label  class="col-sm-2 col-form-label">Number of Company Worked</label>
+                    <div class="col-sm-4">
+                      @sptval2[4].Trim()
+                    </div>
+                    
+                  </div>
+                  
+        
+    </form>
+    }
+    <form>
+
+                  <div class="form-group">
+                  <div class="space"> </div>
+                  <label  class="control-label"> Reason</label>
+                  <input type="text" name="CandidateImage" id="txtreson"    class="form-control" placeholder="Plz Enter Reason" width="50px"/>
+                                                   
+                  </div>
+                                         
+                                            
+                       <div>                      
+                  <input type="button" id="btnApproved" class="btn btn-info" value="Approved" formaction=""/>
+                  <input type="button" id="btnDecline" class="btn btn-info" value="Decline" formaction=""/>
+
+                    @Html.ActionLink("For any changes click here", "CandidateRegisterationDetail", new { id=ViewBag.myst },new{@class = "btn btn-info"})
+                    </div>
+    </form>
+   
+   }
+
+
+
+  
+
+
+
+<script type="text/javascript">  
+    $(document).ready(function () {  
+        $("#btnApproved").click(function () {
+            debugger;
+             var Reason = $("#txtreson").val(); 
+            var name = $('#CandidateName').text().trim();
+            var email = $('#CandidateEmail').text().trim();
+            var CandidateContactNumber = $('#CandidateContactNumber').text().trim();
+            var CandidateId = $('#CandidateId').text().trim();
+            
+            $.ajax(  
+            {   
+                url: "/Dashboard/StatusApprove",
+                type: "POST",
+                dataType:"JSON",
+                 data: {
+                    CandidateId: CandidateId,
+                    Reason:Reason,
+                    name:name,
+                    email:email,
+                    CandidateContactNumber:CandidateContactNumber,
+                    CandidateId:CandidateId
+                   
+                } ,
+                    success: function(data) {
+                        confirm("Your Data has been send for Approval.");
+                    },
+                    error: function() {
+                        alert("Error While Data is Approved.");
+                    }
+                
+
+
+
+           });  
+            return false;
+  
+        });  
+        
+    });  
+  
+</script>
+
+ <script type="text/javascript">  
+    $(document).ready(function () {  
+        $("#btnDecline").click(function () {
+            debugger;
+            
+            var Reason = $("#txtreson").val(); 
+            var name = $('#CandidateName').text().trim();
+            var email = $('#CandidateEmail').text().trim();
+            var CandidateContactNumber = $('#CandidateContactNumber').text().trim();
+            var CandidateId = $('#CandidateId').text().trim();
+        
+            var btn=$('#btnDecline').val().trim();
+            $.ajax(  
+            {   
+                url: "/Dashboard/CandidateStatusDecline",
+                type: "POST",
+                dataType:"JSON",
+                data: {
+                    CandidateId: CandidateId,
+                    Reason:Reason,
+                    name:name,
+                    email:email,
+                    CandidateContactNumber:CandidateContactNumber,
+                    CandidateId:CandidateId,
+                    btn:btn
+                   
+                } ,
+                    success: function(data) {
+                        confirm("Your Data has been Decline");
+                    },
+                    error: function() {
+                        alert("Error While Data is Declined.");
+                    }
+                
+
+
+
+           });  
+            return false;
+  
+        });  
+        
+    });  
+  
+</script>
+
+        

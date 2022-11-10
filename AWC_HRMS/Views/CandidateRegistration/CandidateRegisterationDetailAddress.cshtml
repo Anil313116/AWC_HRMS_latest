@@ -1,0 +1,437 @@
+﻿@model AWC_HRMS.Models.CandidatePersonalDetails
+
+
+@{
+    ViewData["Title"] = "CandidateRegisterationDetail";
+    ViewData["btn"] = "Save";
+    Layout = "~/Views/Shared/_LayoutCandidateForm.cshtml";
+}
+
+@*Respose.write "Bretval0: " + @ViewBag.myst*@
+
+
+<div class="row">
+    <div class="col-md-1 col-sm-12 Font_Color2">
+    </div>
+                                                                 
+    <div class="col-md-8 col-sm-12 table-borderless  a1" >
+
+        <form asp-action="CandidateRegisterationDetailAddress" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger Font_Color"></div>
+            <h1 style="   font-family: Arial;font-size: 34pt;  font-weight: bold;" align="center">Address</h1>
+            <hr>
+            
+
+            <input asp-for="LinkStatus" type="hidden" value="@ViewBag.myst" />
+            <input asp-for="CandidateId" type="hidden" id="CandidateId" value="@ViewBag.NewCId" />
+
+            <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center">Permanent Address Details</p>
+                <hr style="border: 1px outset red">
+                <div class="form-group">
+                    <div class="space"> </div>
+                    <label asp-for="PermanentAddress" class="control-label">Address</label>
+                    <input asp-for="PermanentAddress" class="form-control" id="PermanentAddress" required />
+                    <span asp-validation-for="PermanentAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" id="PState">
+                    <div class="space"> </div>
+                    <label asp-for="PermanentStateId" class="control-label">State </label>
+                    @*<input asp-for="PermanentStateId" class="form-control" required />*@
+                    @Html.DropDownListFor(m => m.PermanentStateId, new SelectList(Model.stateMasters, "StateId", "StateName"),"--Please Select State--", new { @class = "form-control" ,@onchange ="PermanentgetCity()",@id="PermanentStateId"})
+                    <span asp-validation-for="PermanentStateId" class="text-danger"></span>
+                </div>
+                <div style="visibility:hidden"> 
+                <input class="form-check-input" type="radio" value="Other"  id="other" required onchange="buttonshow();"   /> Other    
+                </div>
+
+                <div class="form-group" style="display:none; visibility:hidden" id="state"  >
+                    <div class="space"> </div>
+                    <label class="control-label">Other State </label>
+                    <input asp-for="PermanentOtherState" type="text" class="form-control" />
+
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="display:none" id="city">
+                    <div class="space"> </div>
+                    <label class="control-label">Other City </label>
+                    <input type="text" asp-for="PermanentOtherCity" class="form-control" />
+
+                    <span class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group" id="PCity">
+                    <div class="space"> </div>
+                    <label asp-for="PermanentCityId" class="control-label">City </label>
+                    @*<input asp-for="PermanentCityId" class="form-control" required />*@
+                    @Html.DropDownListFor(m => m.PermanentCityId, new SelectList(Model.cityMasters, "CityId", "CityName"),"--Please select City--", new { @class = "form-control",@id="PermanentCityId" })
+                    <span asp-validation-for="PermanentCityId" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="space"> </div>
+                    <label asp-for="PermanentPinCode" class="control-label">Pin Code</label>
+                    <input asp-for="PermanentPinCode" class="form-control" id="PermanentPinCode" required />
+                    <span asp-validation-for="PermanentPinCode" class="text-danger"></span>
+                </div>
+            </div>
+            </br>
+            <hr />
+            <div style="background: #e0dfdc; padding: 2px; border: 1px solid black;">
+                <p align="center">Current Address Details</p>
+                <hr style="border: 1px outset red">
+                <div class="form-group">
+                    <div class="space"> </div>
+                    <label asp-for="CurrentAddress" class="control-label">Address </label>
+                    <input asp-for="CurrentAddress" class="form-control" id="CurrentAddress" required />
+                    <span asp-validation-for="CurrentAddress" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group" id="CurrentState">
+                    <div class="space"> </div>
+                    <label asp-for="CurrentStateId" class="control-label">State </label>
+                    @*<input asp-for="CurrentStateId" class="form-control" required />*@
+                    @Html.DropDownListFor(m => m.CurrentStateId, new SelectList(Model.stateMasters, "StateId", "StateName"),"--Please Select State--", new { @class = "form-control" ,@onchange ="CurrentgetCity()",@id="CurrentStateId"})
+                    <span asp-validation-for="CurrentStateId" class="text-danger"></span>
+                </div>
+                <div style="visibility:hidden">
+                <input class="form-check-input" type="radio" value="Other" id="Currentother" required onchange="buttonCurrentshow()" /> Other    
+                </div>
+                <div class="form-group" style="display:none;visibility:" id="CState">
+                    <div class="space"> </div>
+                    <label class="control-label">Other State </label>
+                    <input type="text" asp-for="CurrentOtherState" class="form-control" />
+
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="display:none" id="CCity">
+                    <div class="space"> </div>
+                    <label class="control-label">Other City </label>
+                    <input type="text" asp-for="CurrentOtherCity" class="form-control" />
+
+                    <span class="text-danger"></span>
+                </div>
+
+                <div class="form-group" id="CurrentCity">
+                    <div class="space"> </div>
+                    <label asp-for="CurrentCityId" class="control-label">City </label>
+                    @* <input asp-for="CurrentCityId" class="form-control" required />*@
+
+                    @Html.DropDownListFor(m => m.CurrentCityId, new SelectList(Model.cityMasters, "CityId", "CityName"),"--Please Select State--", new { @class = "form-control",@id="CurrentCityId"})
+                    <span asp-validation-for="CurrentCityId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <div class="space"> </div>
+                    <label asp-for="CurrentPinCode" class="control-label">Pin Code</label>
+                    <input asp-for="CurrentPinCode" class="form-control" id="CurrentPinCode" required />
+                    <span asp-validation-for="CurrentPinCode" class="text-danger"></span>
+                </div>
+            </div>
+            </br>
+
+            <div class="form-group">
+                <div class="space"> </div>
+
+                @Html.ActionLink("Back", "CandidateRegisterationDetailNext", new { id=ViewBag.NewCId },new{@class = "btn btn-info"})
+                <input type="submit" class="btn btn-info" value="Save" formaction="" />
+                <!--<input type="button" value="Next" onclick="Response.redirect('CandidateRegisterationDetailNext')" class="btn button_color1" />-->
+                @Html.ActionLink("Next", "CandidateRegisterationDetailQualification", new { id=ViewBag.NewCId },new{@id="form5next",@class = "btn btn-info"})
+            </div>
+            </br>
+        </form>
+        @if (@ViewData["reason"] == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success text-center">@ViewData["reason"]</div>
+        }
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        //alert('All assets are loaded');
+        //debugger;
+        var data = "@ViewBag.AddVals2";
+        if (data != "") {
+            
+            var sptval0 = data.split("|");
+
+            document.getElementById("PermanentAddress").value = sptval0[10];
+            document.getElementById("PermanentStateId").value = sptval0[11];
+
+            PermanentgetCity();
+
+            //('#PermanentCityId:selected').id = sptval0[12];
+
+            document.getElementById("PermanentCityId").value = sptval0[12];
+            document.getElementById("PermanentPinCode").value = sptval0[13];
+
+            document.getElementById("CurrentAddress").value = sptval0[14];
+            document.getElementById("CurrentStateId").value = sptval0[15];
+            document.getElementById("CurrentCityId").value = sptval0[16];
+            document.getElementById("CurrentPinCode").value = sptval0[17];
+            
+            
+        }
+
+    });
+
+</script>
+
+<script type="text/javascript">
+
+
+    function buttonshow() {
+
+        $('#state').show();
+        $('#state').display = "block";
+        $('#PState').display = "none";
+        $("#PState").prop("disabled", false);
+        $('#PState').hide();
+
+        
+
+        $('#city').show();
+        $('#city').display = "block";
+        $('#PCity').display = "none";
+
+        $("#PCity").prop("disabled", false);
+        $('#PCity').hide();
+
+    }
+
+    function buttonCurrentshow() {
+
+        $('#CState').show();
+        $('#CState').display = "block";
+        // $('#CState').display = "none";
+        //$("#CState").prop("disabled", false);
+        $('#CurrentState').hide();
+
+        $('#CCity').show();
+        $('#CCity').display = "block";
+        $('#CCity').display = "none";
+
+        $("#CCity").prop("disabled", false);
+        $('#CurrentCity').hide();
+
+    }
+
+
+    $("#PermanentCityId").html("");
+
+    $("#CurrentCityId").html("");
+
+
+    function PermanentgetCity() {
+        
+        var id = $('#PermanentStateId :selected').val();
+
+      
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action( "GetCity","CandidateRegistration")',
+
+            data: { StateId: id },
+
+            dataType: "json",
+            success: function(data, status, xhr) {
+
+
+                var v = data;
+
+                $("#PermanentCityId").html("");
+                $.each(data, function(i, data) {
+                   
+
+                    if (i == 0) {
+                        $('<option>',
+                            {
+                                value: 0,
+                                text: "--All--"
+                            }).html("--All--").appendTo("#PermanentCityId");
+                    }
+                    else {
+
+
+                        $('<option>',
+                            {
+                                value: data.cityId,
+                                text: data.cityName
+                            }).html(data.cityName).appendTo("#PermanentCityId");
+                    }
+                });
+
+            },
+            error: function(jqXhr, textStatus, errorMessage) {
+                alert("Error Populating Regional Office Data");
+            }
+        });
+    };
+
+
+    function CurrentgetCity() {
+
+        var id = $('#CurrentStateId :selected').val();
+       
+
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action( "GetCity","CandidateRegistration")',
+
+            data: { StateId: id },
+
+            dataType: "json",
+            success: function(data, status, xhr) {
+
+
+                var v = data;
+
+                $("#CurrentCityId").html("");
+                $.each(data, function(i, data) {
+                    if (i == 0) {
+                        $('<option>',
+                            {
+                                value: 0,
+                                text: "--All--"
+                            }).html("--All--").appendTo("#CurrentCityId");
+                    }
+                    else {
+                        $('<option>',
+                            {
+                                value: data.cityId,
+                                text: data.cityName
+                            }).html(data.cityName).appendTo("#CurrentCityId");
+
+
+                    }
+                });
+
+            },
+            error: function(jqXhr, textStatus, errorMessage) {
+                alert("Error Populating Regional Office Data");
+            }
+        });
+
+
+    };
+
+</script>
+<script type="text/javascript">
+    $("#PermanentCityId").html("");
+
+    $("#CurrentCityId").html("");
+
+    function PermanentgetCity() { }
+
+
+    function PermanentgetCity() {
+
+        var id = $('#PermanentStateId :selected').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action( "GetCity","CandidateRegistration")',
+
+            data: { StateId: id },
+
+            dataType: "json",
+            success: function(data, status, xhr) {
+
+
+                var v = data;
+
+                $("#PermanentCityId").html("");
+                $.each(data, function(i, data) {
+                    if (i == 0) {
+                        $('<option>',
+                            {
+                                value: 0,
+                                text: "--All--"
+                            }).html("--All--").appendTo("#PermanentCityId");
+                    }
+                    else {
+                        $('<option>',
+                            {
+                                value: data.cityId,
+                                text: data.cityName
+                            }).html(data.cityName).appendTo("#PermanentCityId");
+                    }
+                });
+
+            },
+            error: function(jqXhr, textStatus, errorMessage) {
+                alert("Error Populating Regional Office Data");
+            }
+        });
+
+
+    };
+
+    function CurrentgetCity() {
+
+        var id = $('#CurrentStateId :selected').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action( "GetCity","CandidateRegistration")',
+
+            data: { StateId: id },
+
+            dataType: "json",
+            success: function(data, status, xhr) {
+
+
+                var v = data;
+
+                $("#CurrentCityId").html("");
+                $.each(data, function(i, data) {
+                    if (i == 0) {
+                        $('<option>',
+                            {
+                                value: 0,
+                                text: "--All--"
+                            }).html("--All--").appendTo("#CurrentCityId");
+                    }
+                    else {
+                        $('<option>',
+                            {
+                                value: data.cityId,
+                                text: data.cityName
+                            }).html(data.cityName).appendTo("#CurrentCityId");
+                    }
+                });
+
+            },
+            error: function(jqXhr, textStatus, errorMessage) {
+                alert("Error Populating Regional Office Data");
+            }
+        });
+    };
+
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
+
+

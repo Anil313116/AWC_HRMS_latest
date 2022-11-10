@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="~/Template/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Template/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link href="~/Content/Validation.css" rel="stylesheet" />
+    <link href="~/Scripts/datetimexdsoft/build/jquery.datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/Scripts/datetimepicker/jqueryui.css" rel="stylesheet" />
+    @* @Scripts.Render("~/bundles/modernizr")*@
+    <!-- Custom Fonts -->
+    <link href="~/Template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .a1 {
+            background: linear-gradient(to bottom, #ffffff 0%, #4c4141 );  border: 2px outset black;  font-family:Gill Sans, sans-serif; color:black
+        }
+        .listfont li>a {font-weight:700; background: linear-gradient(to bottom, #ffffff 0%, #a99c9c ); color:black;}
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-stat ic-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Candidate Forms</a>
+                @*<marquee><h3 style="font-family:Gill Sans, sans-serif; color:Red">Welcome to AWC On Boarding</h3></marquee>*@
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+
+                @*<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>*@
+                    @*<ul class="dropdown-menu dropdown-user">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <span>Welcome </span> <span class="text-success font-weight-bold p-2">@User.Identity.Name</span><a class="btn btn-success" asp-action="Logout" asp-controller="CandidateRegistration">Logout</a>
+                            </li>
+                        }
+
+                    </ul>*@
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav listfont" id="side-menu">
+                        <li>
+                            @Html.ActionLink("Personal Details", "CandidateRegisterationDetail", new { id=ViewBag.NewCId }, new { id="Link1", @class = "btn btn-info "})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetail" id="Link1" ><i class="fa fa-dashboard fa-fw"></i> Personal Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("Emergency Contact Details", "CandidateRegisterationDetailNext", new { id=ViewBag.NewCId }, new { id="Link3", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetailNext" id="Link3"><i class="fa fa-dashboard fa-fw"></i>Emergency Contact Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("Address Details", "CandidateRegisterationDetailAddress", new { id=ViewBag.NewCId }, new { id="Link5", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetailAddress" id="Link5"><i class="fa fa-dashboard fa-fw"></i> Address Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("PG Qualification Details", "CandidateRegisterationDetailQualification", new { id=ViewBag.NewCId }, new { id="Link7", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetailQualification" id="Link7"><i class="fa fa-dashboard fa-fw"></i> PG Qualification Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("Graduation Qualification Details", "CandidateRegisterationDetail_QualificationUG", new { id=ViewBag.NewCId }, new { id="Link9", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetail_QualificationUG" id="Link9"><i class="fa fa-dashboard fa-fw"></i> UG Qualification Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("12th Qualification Details", "CandidateRegisterationDetail_Qualification12", new { id=ViewBag.NewCId }, new { id="Link11", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetail_Qualification12" id="Link11"><i class="fa fa-dashboard fa-fw"></i> 12th Qualification Details</a>*@
+                        </li>
+                         <li>
+                             @Html.ActionLink("10th Qualification Details", "CandidateRegisterationDetail_Qualification10", new { id=ViewBag.NewCId }, new { id="Link13", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetail_Qualification10" id="Link13"><i class="fa fa-dashboard fa-fw"></i> 10th Qualification Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("Employment Details", "CandidateRegisterationDetail_Employement", new { id=ViewBag.NewCId }, new { id="Link15", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/CandidateRegisterationDetail_Employement" id="Link15"><i class="fa fa-dashboard fa-fw"></i> Employment Details</a>*@
+                        </li>
+                        <li>
+
+                          @Html.ActionLink("Candidate Bank Details", "CandidateBankDetails", new { id=ViewBag.NewCId }, new { id="Link17", @class = "btn btn-info"})
+
+
+                           @* <a href="/CandidateRegistration/CandidateBankDetails"><i class="fa fa-dashboard fa-fw"></i>Candidate Bank Details</a>*@
+                        </li>
+                        <li>
+                            @Html.ActionLink("Preview Your Data", "AllCandidateDetails", new { id=ViewBag.NewCId }, new { id="Link19", @class = "btn btn-info"})
+                            @*<a href="/CandidateRegistration/AllCandidateDetails" id="Link19"><i class="fa fa-dashboard fa-fw"></i> Preview Your Data</a>*@
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper" >
+            
+            <div class="row">
+
+                <script src="~/Scripts/datetimepicker/jquery-1.12.4.js"></script>
+
+                <script src="~/Scripts/jquery.validate.min.js"></script>
+                <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+                <script src="~/Scripts/datetimepicker/jqueryui.js"></script>
+                <script src="~/Template/vendor/bootstrap/js/bootstrap.min.js"></script>
+                <script src="~/Scripts/datetimexdsoft/build/jquery.datetimepicker.full.min.js"></script>
+
+                @RenderBody()
+            </div>
+
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- /#Script Running for all the Candidate Registration Forms -->
+        <script type="text/javascript">
+        $(document).ready(function(){
+        
+        //-- Code running for status wise enabling/disabling of left panel links and the next buttton -
+            //debugger;
+        
+        //var CurrStatus = "@ViewBag.myst";
+        var CurrStatus = "20";
+
+        if (CurrStatus == "0") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#Link13').addClass("disabled");
+            $('#Link11').addClass("disabled");
+            $('#Link9').addClass("disabled");
+            $('#Link7').addClass("disabled");
+            $('#Link5').addClass("disabled");
+            $('#Link3').addClass("disabled");
+            //$('#form1next').prop('disabled', true);
+            $('#form1next').prop('ariaDisabled', true);
+            $('#form1next').addClass('disabled');
+        }
+        else if (CurrStatus == "1") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#Link13').addClass("disabled");
+            $('#Link11').addClass("disabled");
+            $('#Link9').addClass("disabled");
+            $('#Link7').addClass("disabled");
+            $('#Link5').addClass("disabled");
+            $('#form3next').prop('ariaDisabled', true);
+            $('#form3next').addClass('disabled');
+        }
+        else if (CurrStatus == "3") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#Link13').addClass("disabled");
+            $('#Link11').addClass("disabled");
+            $('#Link9').addClass("disabled");
+            $('#Link7').addClass("disabled");
+            $('#form5next').prop('ariaDisabled', true);
+            $('#form5next').addClass('disabled');
+        }
+        else if (CurrStatus == "5") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#Link13').addClass("disabled");
+            $('#Link11').addClass("disabled");
+            $('#Link9').addClass("disabled");
+            $('#form7next').prop('ariaDisabled', true);
+            $('#form7next').addClass('disabled');
+        }
+        else if (CurrStatus == "7") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#Link13').addClass("disabled");
+            $('#Link11').addClass("disabled");
+            $('#form9next').prop('ariaDisabled', true);
+            $('#form9next').addClass('disabled');
+        }
+        else if (CurrStatus == "9") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#Link13').addClass("disabled");
+            $('#form11next').prop('ariaDisabled', true);
+            $('#form11next').addClass('disabled');
+        }
+        else if (CurrStatus == "11") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#Link15').addClass("disabled");
+            $('#form13next').prop('ariaDisabled', true);
+            $('#form13next').addClass('disabled');
+        }
+        else if (CurrStatus == "13") { 
+            $('#Link19').addClass("disabled");
+            $('#Link17').addClass("disabled");
+            $('#form15next').prop('ariaDisabled', true);
+            $('#form15next').addClass('disabled');
+        }
+        else if (CurrStatus == "15") { 
+            $('#Link19').addClass("disabled");
+            
+
+        
+        }
+        
+        //Disabling all the a href's having disabled class in it.
+        $(".nav a").each(function(){
+        if($(this).hasClass("disabled"))
+        {
+            $(this).removeAttr("href");
+        }
+        });
+               
+        //Code running for first time data load in case of Link-Status is '0'
+        var Entrydata = "@ViewBag.NewData";
+
+        if (Entrydata != "") {
+
+            var sptval0 = Entrydata.split("&amp;");
+
+            for (let i = 0; i < sptval0.length; i++) {
+                var sptval1 = sptval0[i].split("=");
+                for (let j = 0; j < 1; j++) {
+                    
+                    if (sptval1[0] == "id") { document.getElementById("CandidateId").value = sptval1[1]; }
+                    if (sptval1[0] == "name") { document.getElementById("CandidateName").value = sptval1[1]; }
+                    if (sptval1[0] == "Email") { document.getElementById("CandidateEmailId").value = sptval1[1]; }
+                    if (sptval1[0] == "ContactNumber") { document.getElementById("CandidateContactNumber").value = sptval1[1]; }
+                }
+            }  
+        }//End of code for first time data load in case of Link-Status is '0'
+
+        //Starting of the Candidate forms data populate calling
+        var data = "@ViewBag.Vals2";
+        
+        if (data != "") {
+
+            var sptval0 = data.split("|");
+
+            document.getElementById("CandidateName").value = sptval0[0];
+            document.getElementById("CandidateEmailId").value = sptval0[1];
+            document.getElementById("CandidateContactNumber").value = sptval0[2];
+            if (sptval0[3] == "Male") {
+                document.getElementById("Male").checked = true;
+            }
+            else if (sptval0[3] == "Female") {
+                document.getElementById("Female").checked = true;
+            }
+            else {
+                //document.getElementById("Other").checked = true;
+            }
+            document.getElementById("CandidateAlternateNumber").value = sptval0[5];
+            
+            var dob = sptval0[7].split(" ");
+            var dob1 = dob[0].split("-");
+
+            document.getElementById("Dob").value = dob1[2] + "-" + dob1[1] + "-" + dob1[0];
+
+            if (sptval0[8] == "Married") {
+                document.getElementById("Married").checked = true;
+            }
+            else if (sptval0[8] == "Unmarried") {
+                document.getElementById("Unmarried").checked = true;
+            }
+            else {
+
+            }
+
+            document.getElementById("FatherName").value = sptval0[9];
+            
+            var Andt = sptval0[32].split(" ");
+            var Andt1 = Andt[0].split("-");
+
+            document.getElementById("AnniversaryDate").value = Andt1[2] + "-" + Andt1[1] + "-" + Andt1[0];
+
+            
+        }
+
+        });//End of document.ready method Script tag
+
+        </script>
+        
+        <!-- /#Script Running for all the Images format and size checking-->
+        <script>
+         $(function() {
+        $('#CandidateImage').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#CandidateImage").val('');
+            }
+            });
+        });
+
+
+      $(function() {
+        $('#_12DegreePassingCertificate').change(function() {
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only '.jpeg','.jpg', '.png'formats are allowed.");
+
+                swal("Only '.jpeg','.jpg', '.png' formats are allowed.");
+
+                $("#_12DegreePassingCertificate").val('');
+            }
+            });
+        });
+
+
+    Filevalidation = () => {
+
+
+        const fi = document.getElementById('CandidateImage');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    alert(
+                        "File too Big, please select a file less than 4mb");
+                    $("#CandidateImage").val('');
+                    //} else if (file < 2048) {
+                    //	alert(
+                    //	"File too small, please select a file greater than 2mb");
+                    //	 $("#file").val('');
+                }
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+    Filevalidation1 = () => {
+        const fi = document.getElementById('_12DegreePassingCertificate');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    swal("File too Big, please select a file less than 4mb");
+                    $("#_12DegreePassingCertificate").val('');
+                    //} else if (file < 2048) {
+                    //    alert(
+                    //        "File too small, please select a file greater than 2mb");
+                    //    $("#file1").val('');
+                    //}
+                }
+                else {
+                    document.getElementById('size').innerHTML = '<b>'
+                        + file + '</b> KB';
+                }
+            }
+        }
+    }
+
+    </script>
+    </div>
+</body>
+</html>
